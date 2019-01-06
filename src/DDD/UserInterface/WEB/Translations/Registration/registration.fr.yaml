@@ -1,0 +1,6 @@
+registration:
+    registration: Inscription
+    username: Non d'utilisateur
+    email: Email
+    password: Mot de passe
+    password.confirm: Confirmer le mot de passe

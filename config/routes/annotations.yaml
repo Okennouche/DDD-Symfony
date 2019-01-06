@@ -1,0 +1,3 @@
+actions:
+    resource: ../../src/DDD/UserInterface/WEB/Action
+    type: annotation
