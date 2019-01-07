@@ -16,7 +16,6 @@ namespace App\DDD\Domain\Entity\User;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
  * class User
  *
@@ -57,7 +56,7 @@ class User implements UserInterface, \Serializable
 	/**
 	 * @var boolean
 	 */
-	private $isEnabled;
+	private $isActive;
 
 	/**
 	 * @var \DateTimeImmutable
@@ -115,28 +114,26 @@ class User implements UserInterface, \Serializable
 	}
 
 	/**
-	 * Returns the password used to authenticate the user.
-	 *
-	 * This should be the encoded password. On authentication, a plain-text
-	 * password will be salted, encoded, and then compared to this value.
-	 *
-	 * @return string The password
+	 * @inheritdoc
 	 */
 	public function getPassword()
 	{
 		return $this->password;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getRoles(): array
 	{
 		$roles = $this->roles;
-		// guarantee every user at least has ROLE_USER
+
 		$roles[] = 'ROLE_USER';
 
 		return array_unique($roles);
 	}
 
-	/**c
+	/**
 	 * @return string
 	 */
 	public function getConfirmationToken(): string
@@ -147,9 +144,9 @@ class User implements UserInterface, \Serializable
 	/**
 	 * @return bool
 	 */
-	public function isEnabled(): bool
+	public function isActive(): bool
 	{
-		return $this->isEnabled;
+		return $this->isActive;
 	}
 
 	/**
@@ -190,62 +187,38 @@ class User implements UserInterface, \Serializable
 	}
 
 	/**
-	 * Removes sensitive data from the user.
-	 *
-	 * This is important if, at any given point, sensitive information like
-	 * the plain-text password is stored on this object.
+	 * @inheritdoc
 	 */
-	public function eraseCredentials()
-	{
-		return null;
-	}
+	public function eraseCredentials(){}
 
 	/**
-	 * Returns the salt that was originally used to encode the password.
-	 *
-	 * This can return null if the password was not encoded using a salt.
-	 *
-	 * @return string|null The salt
+	 * @inheritdoc
 	 */
-	public function getSalt()
-	{
-		return null;
-	}
+	public function getSalt(){}
 
 	/**
-	 * String representation of object
-	 * @link http://php.net/manual/en/serializable.serialize.php
-	 * @return string the string representation of the object or null
-	 * @since 5.1.0
+	 * @inheritdoc
 	 */
 	public function serialize()
 	{
-		return serialize([
+		return serialize(array(
 			$this->uuid,
 			$this->username,
 			$this->password,
-			$this->isEnabled
-		]);
+			$this->isActive,
+		));
 	}
 
 	/**
-	 * Constructs the object
-	 * @link http://php.net/manual/en/serializable.unserialize.php
-	 *
-	 * @param string $serialized <p>
-	 * The string representation of the object.
-	 * </p>
-	 *
-	 * @return void
-	 * @since 5.1.0
+	 * @inheritdoc
 	 */
 	public function unserialize($serialized)
 	{
 		list (
 			$this->uuid,
 			$this->username,
-			$this->email,
-			$this->isEnabled
+			$this->password,
+			$this->isActive,
 			) = unserialize($serialized);
 	}
 

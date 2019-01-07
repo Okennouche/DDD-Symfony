@@ -16,7 +16,8 @@ namespace App\DDD\Application\UseCase\Command\User\Registration\Handler;
 
 use App\DDD\Domain\Entity\User\User;
 use App\DDD\Infrastructure\User\Repository\UserQueryRepository;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+;
+use App\DDD\Security\Encoder\Interfaces\EncoderInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationHandlerInterface;
@@ -34,7 +35,7 @@ final class RegistrationHandler implements RegistrationHandlerInterface
 	private $userRepository;
 
 	/**
-	 * @var $encoder UserPasswordEncoderInterface
+	 * @var $encoder EncoderInterface
 	 */
 	private $encoder;
 
@@ -43,7 +44,7 @@ final class RegistrationHandler implements RegistrationHandlerInterface
 	 */
 	public function __construct(
 		UserCommandRepositoryInterface $repository,
-		UserPasswordEncoderInterface $encoder
+		EncoderInterface $encoder
 	) {
 		$this->userRepository = $repository;
 		$this->encoder = $encoder;
@@ -58,13 +59,7 @@ final class RegistrationHandler implements RegistrationHandlerInterface
 			$command->getUuid(),
 			$command->getUsername(),
 			$command->getEmail(),
-			$command->getPassword()
-		);
-
-		$user->encodedPassword(
-			$this->encoder->encodePassword(
-				$user, $user->getPassword()
-			)
+			$this->encoder->encodePassword($command->getPassword(), null)
 		);
 
 		$this->userRepository->store($user);

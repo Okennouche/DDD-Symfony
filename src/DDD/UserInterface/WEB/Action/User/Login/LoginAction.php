@@ -35,7 +35,6 @@ use App\DDD\UserInterface\WEB\Action\User\Login\Interfaces\LoginActionInterface;
  */
 final class LoginAction implements LoginActionInterface
 {
-
 	/**
 	 * @var Environment $twig
 	 */
@@ -85,15 +84,11 @@ final class LoginAction implements LoginActionInterface
 	}
 
 	/**
-	 * @param Request $request
-	 *
-	 * @return mixed
+	 * @inheritdoc
 	 */
 	public function __invoke(AuthenticationUtils $authenticationUtils)
 	{
-		// get the login error if there is one
-		$error = $authenticationUtils->getLastAuthenticationError();
-		// last username entered by the user
+		$error        = $authenticationUtils->getLastAuthenticationError();
 		$lastUsername = $authenticationUtils->getLastUsername();
 
 		//$form = $this->formFactory->create(LoginType::class, null);

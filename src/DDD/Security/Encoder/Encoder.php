@@ -12,9 +12,9 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Domain\Security\Encoder;
+namespace App\DDD\Security\Encoder;
 
-use App\DDD\Domain\Security\Encoder\Interfaces\EncoderInterface;
+use App\DDD\Security\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
 
 

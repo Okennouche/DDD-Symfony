@@ -14,14 +14,14 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Query\User\Login\Handler\Interfaces;
 
-use App\DDD\Domain\Security\Encoder\Interfaces\EncoderInterface;
+use App\DDD\Security\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 use App\DDD\Application\UseCase\Query\User\Login\Interfaces\LoginQueryInterface;
 
 
 /**
- * class LoginQueryHandlerInterface
+ * Interface LoginQueryHandlerInterface
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */
