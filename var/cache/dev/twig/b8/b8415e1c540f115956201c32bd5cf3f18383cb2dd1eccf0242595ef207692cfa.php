@@ -476,6 +476,6 @@ class __TwigTemplate_6648898aea9861d91e519c061a3dfc72b8da287ba374728d21eefacae58
         {% endif %}
     </div>
 </div>
-", "@Twig/Exception/exception.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/Exception/exception.html.twig");
+", "@Twig/Exception/exception.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/Exception/exception.html.twig");
     }
 }

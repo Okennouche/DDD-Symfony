@@ -16,7 +16,7 @@ class __TwigTemplate_2d9de31e149fa4211348a33e693fc788e896f98b6e3dfa5c3684e96e9f5
         $_trait_0 = $this->loadTemplate("bootstrap_4_layout.html.twig", "bootstrap_4_horizontal_layout.html.twig", 1);
         // line 1
         if (!$_trait_0->isTraitable()) {
-            throw new Twig_Error_Runtime('Templates "'."bootstrap_4_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
+            throw new Twig_Error_Runtime('Template "'."bootstrap_4_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
         }
         $_trait_0_blocks = $_trait_0->getBlocks();
 
@@ -473,6 +473,6 @@ col-sm-10
         </div>{#--#}
     </div>
 {%- endblock checkbox_row %}
-", "bootstrap_4_horizontal_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_horizontal_layout.html.twig");
+", "bootstrap_4_horizontal_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_horizontal_layout.html.twig");
     }
 }

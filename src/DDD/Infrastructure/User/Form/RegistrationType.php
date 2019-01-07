@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\Infrastructure\User\Form;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,7 +25,7 @@ use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 
 
 /**
- * class RegistrationType
+ * Class RegistrationType
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */

@@ -14,12 +14,11 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Command\User\Registration;
 
-use App\DDD\Domain\Service\Uuid\Interfaces\UuidInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 
 
 /**
- * class RegistrationCommand
+ * Class RegistrationCommand
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */
@@ -27,7 +26,7 @@ class RegistrationCommand implements RegistrationCommandInterface
 {
 
 	/**
-	 * @var UuidInterface
+	 * @var string
 	 */
 	protected $uuid;
 
@@ -49,13 +48,13 @@ class RegistrationCommand implements RegistrationCommandInterface
 	/**
 	 * RegistrationCommand constructor.
 	 *
-	 * @param UuidInterface $uuid
+	 * @param string        $uuid
 	 * @param string        $username
 	 * @param string        $email
 	 * @param string        $password
 	 */
 	public function __construct(
-		UuidInterface $uuid,
+		string $uuid,
 		string $username,
 		string $email,
 		string $password
@@ -71,7 +70,7 @@ class RegistrationCommand implements RegistrationCommandInterface
 	 */
 	public function getUuid(): string
 	{
-		return $this->uuid::uuid();
+		return $this->uuid;
 	}
 
 	/**

@@ -55,6 +55,6 @@ class __TwigTemplate_831bdf034a64251f980204fc6b7333bbfe207211dd98641569cdbf27476
     <?php \$help_attr['class'] = isset(\$help_attr['class']) ? trim(\$help_attr['class'].' help-text') : 'help-text'; ?>
     <p id=\"<?php echo \$view->escape(\$id); ?>_help\" <?php echo ' '.\$view['form']->block(\$form, 'attributes', array('attr' => \$help_attr)); ?>><?php echo \$view->escape(false !== \$translation_domain ? \$view['translator']->trans(\$help, array(), \$translation_domain) : \$help); ?></p>
 <?php endif; ?>
-", "@Framework/Form/form_help.html.php", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/framework-bundle/Resources/views/Form/form_help.html.php");
+", "@Framework/Form/form_help.html.php", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/framework-bundle/Resources/views/Form/form_help.html.php");
     }
 }

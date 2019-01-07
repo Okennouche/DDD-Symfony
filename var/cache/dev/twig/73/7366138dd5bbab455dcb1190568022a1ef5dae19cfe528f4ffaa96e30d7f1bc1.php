@@ -61,6 +61,6 @@ class __TwigTemplate_2e8d082c122036c93946dce0bc025628fcb8b9a1e8b1bcc719527eca57c
         return new Twig_Source("/*
 {{ include('@Twig/Exception/exception.txt.twig', { exception: exception }) }}
 */
-", "@Twig/Exception/exception.js.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/Exception/exception.js.twig");
+", "@Twig/Exception/exception.js.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/Exception/exception.js.twig");
     }
 }

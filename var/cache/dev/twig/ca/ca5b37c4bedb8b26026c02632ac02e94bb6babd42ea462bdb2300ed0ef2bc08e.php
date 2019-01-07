@@ -52,9 +52,28 @@ class __TwigTemplate_50efffcdc0110af12ebbdcaa3a10a6a4f77e94466355fa9bd143ff429c3
         // line 4
         echo "
     <div class=\"container mt-5\">
-        <div class=\"col-6 mx-auto\">
-            Bienvenue !
+        <div class=\"col-6 mx-auto text-center\">
+           <h3> Bienvenue ! ";
+        // line 7
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 7, $this->source); })()), "user", array()), "username", array()), "html", null, true);
+        echo "</h3>
             Welcome to my DDD experiment
+        </div>
+        <div class=\"col-6 mx-auto mt-5\">
+            <a href=\"";
+        // line 11
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_login");
+        echo "\" class=\"btn btn-block btn-success rounded-0 my-2\">";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("login.login", array(), "login"), "html", null, true);
+        echo "</a>
+        </div>
+        <div class=\"col-6 mx-auto\">
+            <a href=\"";
+        // line 14
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_registration");
+        echo "\" class=\"btn btn-block btn-primary rounded-0 my-2\">";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("registration.registration", array(), "registration"), "html", null, true);
+        echo "</a>
         </div>
     </div>
 
@@ -79,7 +98,7 @@ class __TwigTemplate_50efffcdc0110af12ebbdcaa3a10a6a4f77e94466355fa9bd143ff429c3
 
     public function getDebugInfo()
     {
-        return array (  53 => 4,  44 => 3,  15 => 1,);
+        return array (  73 => 14,  65 => 11,  58 => 7,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -89,12 +108,18 @@ class __TwigTemplate_50efffcdc0110af12ebbdcaa3a10a6a4f77e94466355fa9bd143ff429c3
 {% block body %}
 
     <div class=\"container mt-5\">
-        <div class=\"col-6 mx-auto\">
-            Bienvenue !
+        <div class=\"col-6 mx-auto text-center\">
+           <h3> Bienvenue ! {{ app.user.username }}</h3>
             Welcome to my DDD experiment
+        </div>
+        <div class=\"col-6 mx-auto mt-5\">
+            <a href=\"{{ path('security_login') }}\" class=\"btn btn-block btn-success rounded-0 my-2\">{{ 'login.login' |trans(domain= 'login') }}</a>
+        </div>
+        <div class=\"col-6 mx-auto\">
+            <a href=\"{{ path('security_registration') }}\" class=\"btn btn-block btn-primary rounded-0 my-2\">{{ 'registration.registration' |trans(domain= 'registration') }}</a>
         </div>
     </div>
 
-{% endblock %}", "Home/home.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/src/DDD/UserInterface/WEB/Templates/Home/home.html.twig");
+{% endblock %}", "Home/home.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/src/DDD/UserInterface/WEB/Templates/Home/home.html.twig");
     }
 }

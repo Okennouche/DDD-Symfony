@@ -14,14 +14,14 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Query\User\Login\Handler;
 
-use App\DDD\Security\Encoder\Interfaces\EncoderInterface;
+use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 use App\DDD\Application\UseCase\Query\User\Login\Interfaces\LoginQueryInterface;
 use App\DDD\Application\UseCase\Query\User\Login\Handler\Interfaces\LoginQueryHandlerInterface;
 
 
 /**
- * class LoginQueryHandler
+ * Class LoginQueryHandler
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */

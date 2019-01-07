@@ -16,7 +16,7 @@ class __TwigTemplate_f1c0a2d6880a3d6bc804f75e1d7f3b00a73e150df724104a7c60d358d33
         $_trait_0 = $this->loadTemplate("form_div_layout.html.twig", "form_table_layout.html.twig", 1);
         // line 1
         if (!$_trait_0->isTraitable()) {
-            throw new Twig_Error_Runtime('Templates "'."form_div_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
+            throw new Twig_Error_Runtime('Template "'."form_div_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
         }
         $_trait_0_blocks = $_trait_0->getBlocks();
 
@@ -248,6 +248,6 @@ class __TwigTemplate_f1c0a2d6880a3d6bc804f75e1d7f3b00a73e150df724104a7c60d358d33
         {{- form_rest(form) -}}
     </table>
 {%- endblock form_widget_compound -%}
-", "form_table_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/form_table_layout.html.twig");
+", "form_table_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/form_table_layout.html.twig");
     }
 }

@@ -27,7 +27,7 @@ class __TwigTemplate_45c8828caeb7549224f496eccd447ef181c7a552bdc140b3b521270dce3
 
         // line 3
         echo ":root {
-    --font-sans-serif: 'Helvetica, Arial, sans-serif';
+    --font-sans-serif: Helvetica, Arial, sans-serif;
     --page-background: #f9f9f9;
     --color-text: #222;
     /* when updating any of these colors, do the same in toolbar.css.twig */
@@ -249,7 +249,7 @@ header .container { display: flex; justify-content: space-between; }
         return new Twig_Source("{# This file is based on WebProfilerBundle/Resources/views/Profiler/profiler.css.twig.
    If you make any change in this file, verify the same change is needed in the other file. #}
 :root {
-    --font-sans-serif: 'Helvetica, Arial, sans-serif';
+    --font-sans-serif: Helvetica, Arial, sans-serif;
     --page-background: #f9f9f9;
     --color-text: #222;
     /* when updating any of these colors, do the same in toolbar.css.twig */
@@ -447,6 +447,6 @@ header .container { display: flex; justify-content: space-between; }
     .hidden-xs-down { display: initial; }
     .help-link { margin-left: 30px; }
 }
-", "@Twig/exception.css.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/exception.css.twig");
+", "@Twig/exception.css.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bundle/Resources/views/exception.css.twig");
     }
 }

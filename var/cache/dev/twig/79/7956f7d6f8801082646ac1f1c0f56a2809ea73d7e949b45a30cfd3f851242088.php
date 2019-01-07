@@ -16,7 +16,7 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
         $_trait_0 = $this->loadTemplate("bootstrap_base_layout.html.twig", "bootstrap_4_layout.html.twig", 1);
         // line 1
         if (!$_trait_0->isTraitable()) {
-            throw new Twig_Error_Runtime('Templates "'."bootstrap_base_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
+            throw new Twig_Error_Runtime('Template "'."bootstrap_base_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
         }
         $_trait_0_blocks = $_trait_0->getBlocks();
 
@@ -885,18 +885,14 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
             echo "
         <label";
             // line 263
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["label_attr"]) || array_key_exists("label_attr", $context) ? $context["label_attr"] : (function () { throw new Twig_Error_Runtime('Variable "label_attr" does not exist.', 263, $this->source); })()));
-            foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
-                echo " ";
-                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
-                echo "=\"";
-                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
-                echo "\"";
+            $__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105 = array("attr" => (isset($context["label_attr"]) || array_key_exists("label_attr", $context) ? $context["label_attr"] : (function () { throw new Twig_Error_Runtime('Variable "label_attr" does not exist.', 263, $this->source); })()));
+            if (!is_array($__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105)) {
+                throw new Twig_Error_Runtime('Variables passed to the "with" tag must be a hash.', 263, $this->source);
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['attrname'], $context['attrvalue'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
+            $context['_parent'] = $context;
+            $context = array_merge($context, $__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105);
+            $this->displayBlock("attributes", $context, $blocks);
+            $context = $context['_parent'];
             echo ">";
             // line 264
             echo twig_escape_filter($this->env, (( !((isset($context["label"]) || array_key_exists("label", $context) ? $context["label"] : (function () { throw new Twig_Error_Runtime('Variable "label" does not exist.', 264, $this->source); })()) === false)) ? (((((isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 264, $this->source); })()) === false)) ? ((isset($context["label"]) || array_key_exists("label", $context) ? $context["label"] : (function () { throw new Twig_Error_Runtime('Variable "label" does not exist.', 264, $this->source); })())) : ($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((isset($context["label"]) || array_key_exists("label", $context) ? $context["label"] : (function () { throw new Twig_Error_Runtime('Variable "label" does not exist.', 264, $this->source); })()), array(), (isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 264, $this->source); })()))))) : ("")), "html", null, true);
@@ -1016,32 +1012,28 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
         if ( !twig_test_empty((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 304, $this->source); })()))) {
             // line 305
             $context["help_attr"] = twig_array_merge((isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 305, $this->source); })()), array("class" => twig_trim_filter((((twig_get_attribute($this->env, $this->source, ($context["help_attr"] ?? null), "class", array(), "any", true, true)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, ($context["help_attr"] ?? null), "class", array()), "")) : ("")) . " form-text text-muted"))));
-            // line 307
+            // line 306
             echo "<small id=\"";
-            echo twig_escape_filter($this->env, (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new Twig_Error_Runtime('Variable "id" does not exist.', 307, $this->source); })()), "html", null, true);
-            echo "_help\" ";
+            echo twig_escape_filter($this->env, (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new Twig_Error_Runtime('Variable "id" does not exist.', 306, $this->source); })()), "html", null, true);
+            echo "_help\"";
+            $__internal_921de08f973aabd87ecb31654784e2efda7404f12bd27e8e56991608c76e7779 = array("attr" => (isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 306, $this->source); })()));
+            if (!is_array($__internal_921de08f973aabd87ecb31654784e2efda7404f12bd27e8e56991608c76e7779)) {
+                throw new Twig_Error_Runtime('Variables passed to the "with" tag must be a hash.', 306, $this->source);
+            }
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 307, $this->source); })()));
-            foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
-                echo " ";
-                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
-                echo "=\"";
-                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
-                echo "\"";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['attrname'], $context['attrvalue'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
+            $context = array_merge($context, $__internal_921de08f973aabd87ecb31654784e2efda7404f12bd27e8e56991608c76e7779);
+            $this->displayBlock("attributes", $context, $blocks);
+            $context = $context['_parent'];
             echo ">";
-            // line 308
-            if (((isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 308, $this->source); })()) === false)) {
-                // line 309
-                echo twig_escape_filter($this->env, (isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 309, $this->source); })()), "html", null, true);
+            // line 307
+            if (((isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 307, $this->source); })()) === false)) {
+                // line 308
+                echo twig_escape_filter($this->env, (isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 308, $this->source); })()), "html", null, true);
             } else {
-                // line 311
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 311, $this->source); })()), array(), (isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 311, $this->source); })())), "html", null, true);
+                // line 310
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 310, $this->source); })()), array(), (isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 310, $this->source); })())), "html", null, true);
             }
-            // line 313
+            // line 312
             echo "</small>";
         }
         
@@ -1059,7 +1051,7 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
 
     public function getDebugInfo()
     {
-        return array (  1045 => 313,  1042 => 311,  1039 => 309,  1037 => 308,  1020 => 307,  1018 => 305,  1016 => 304,  1007 => 303,  996 => 297,  986 => 294,  983 => 293,  979 => 292,  971 => 291,  969 => 290,  960 => 289,  948 => 284,  946 => 283,  944 => 282,  942 => 281,  938 => 280,  935 => 278,  933 => 277,  931 => 276,  928 => 274,  926 => 273,  917 => 272,  906 => 266,  904 => 265,  902 => 264,  888 => 263,  884 => 262,  880 => 258,  877 => 255,  876 => 254,  875 => 253,  873 => 252,  871 => 251,  868 => 249,  866 => 248,  863 => 246,  861 => 245,  858 => 243,  856 => 242,  853 => 240,  850 => 238,  848 => 237,  845 => 236,  843 => 235,  841 => 234,  832 => 232,  814 => 222,  802 => 227,  800 => 226,  796 => 225,  794 => 224,  774 => 222,  770 => 219,  767 => 216,  766 => 215,  765 => 214,  763 => 213,  761 => 212,  758 => 210,  756 => 209,  753 => 207,  750 => 205,  748 => 204,  746 => 203,  744 => 202,  735 => 201,  725 => 196,  719 => 193,  718 => 192,  717 => 191,  716 => 190,  712 => 189,  708 => 188,  699 => 187,  688 => 183,  686 => 182,  682 => 181,  680 => 180,  677 => 178,  675 => 177,  671 => 176,  669 => 175,  667 => 174,  665 => 173,  656 => 172,  645 => 168,  643 => 167,  639 => 166,  637 => 165,  634 => 163,  632 => 162,  628 => 161,  626 => 160,  624 => 159,  622 => 158,  613 => 157,  603 => 154,  601 => 153,  592 => 152,  582 => 149,  580 => 148,  571 => 147,  561 => 144,  558 => 143,  555 => 142,  553 => 141,  544 => 140,  534 => 137,  531 => 135,  529 => 134,  527 => 133,  524 => 131,  522 => 130,  513 => 129,  501 => 126,  498 => 125,  495 => 123,  493 => 122,  489 => 121,  487 => 120,  485 => 119,  481 => 118,  472 => 117,  459 => 111,  457 => 110,  455 => 109,  446 => 108,  435 => 104,  431 => 103,  426 => 100,  422 => 99,  419 => 98,  417 => 97,  412 => 94,  408 => 93,  405 => 92,  403 => 91,  398 => 88,  394 => 87,  391 => 86,  389 => 85,  384 => 82,  380 => 81,  377 => 80,  375 => 79,  370 => 76,  366 => 75,  363 => 74,  361 => 73,  356 => 70,  352 => 69,  349 => 68,  347 => 67,  342 => 64,  338 => 63,  335 => 62,  333 => 61,  329 => 60,  327 => 59,  324 => 57,  322 => 56,  319 => 54,  317 => 53,  315 => 52,  306 => 51,  296 => 48,  293 => 46,  291 => 45,  289 => 44,  280 => 43,  270 => 40,  267 => 38,  265 => 37,  263 => 36,  254 => 35,  244 => 32,  241 => 30,  239 => 29,  237 => 28,  228 => 27,  217 => 23,  214 => 21,  209 => 18,  206 => 17,  204 => 16,  202 => 15,  197 => 12,  194 => 11,  192 => 10,  188 => 9,  186 => 8,  184 => 7,  182 => 6,  173 => 5,  163 => 303,  160 => 302,  157 => 300,  155 => 289,  152 => 288,  149 => 286,  147 => 272,  144 => 271,  141 => 269,  139 => 232,  136 => 231,  134 => 201,  131 => 200,  128 => 198,  126 => 187,  123 => 186,  121 => 172,  118 => 171,  116 => 157,  113 => 156,  111 => 152,  108 => 151,  106 => 147,  104 => 140,  102 => 129,  99 => 128,  97 => 117,  94 => 116,  92 => 108,  89 => 107,  87 => 51,  84 => 50,  82 => 43,  79 => 42,  77 => 35,  74 => 34,  72 => 27,  69 => 26,  67 => 5,  64 => 4,  61 => 2,  18 => 1,);
+        return array (  1037 => 312,  1034 => 310,  1031 => 308,  1029 => 307,  1016 => 306,  1014 => 305,  1012 => 304,  1003 => 303,  992 => 297,  982 => 294,  979 => 293,  975 => 292,  967 => 291,  965 => 290,  956 => 289,  944 => 284,  942 => 283,  940 => 282,  938 => 281,  934 => 280,  931 => 278,  929 => 277,  927 => 276,  924 => 274,  922 => 273,  913 => 272,  902 => 266,  900 => 265,  898 => 264,  888 => 263,  884 => 262,  880 => 258,  877 => 255,  876 => 254,  875 => 253,  873 => 252,  871 => 251,  868 => 249,  866 => 248,  863 => 246,  861 => 245,  858 => 243,  856 => 242,  853 => 240,  850 => 238,  848 => 237,  845 => 236,  843 => 235,  841 => 234,  832 => 232,  814 => 222,  802 => 227,  800 => 226,  796 => 225,  794 => 224,  774 => 222,  770 => 219,  767 => 216,  766 => 215,  765 => 214,  763 => 213,  761 => 212,  758 => 210,  756 => 209,  753 => 207,  750 => 205,  748 => 204,  746 => 203,  744 => 202,  735 => 201,  725 => 196,  719 => 193,  718 => 192,  717 => 191,  716 => 190,  712 => 189,  708 => 188,  699 => 187,  688 => 183,  686 => 182,  682 => 181,  680 => 180,  677 => 178,  675 => 177,  671 => 176,  669 => 175,  667 => 174,  665 => 173,  656 => 172,  645 => 168,  643 => 167,  639 => 166,  637 => 165,  634 => 163,  632 => 162,  628 => 161,  626 => 160,  624 => 159,  622 => 158,  613 => 157,  603 => 154,  601 => 153,  592 => 152,  582 => 149,  580 => 148,  571 => 147,  561 => 144,  558 => 143,  555 => 142,  553 => 141,  544 => 140,  534 => 137,  531 => 135,  529 => 134,  527 => 133,  524 => 131,  522 => 130,  513 => 129,  501 => 126,  498 => 125,  495 => 123,  493 => 122,  489 => 121,  487 => 120,  485 => 119,  481 => 118,  472 => 117,  459 => 111,  457 => 110,  455 => 109,  446 => 108,  435 => 104,  431 => 103,  426 => 100,  422 => 99,  419 => 98,  417 => 97,  412 => 94,  408 => 93,  405 => 92,  403 => 91,  398 => 88,  394 => 87,  391 => 86,  389 => 85,  384 => 82,  380 => 81,  377 => 80,  375 => 79,  370 => 76,  366 => 75,  363 => 74,  361 => 73,  356 => 70,  352 => 69,  349 => 68,  347 => 67,  342 => 64,  338 => 63,  335 => 62,  333 => 61,  329 => 60,  327 => 59,  324 => 57,  322 => 56,  319 => 54,  317 => 53,  315 => 52,  306 => 51,  296 => 48,  293 => 46,  291 => 45,  289 => 44,  280 => 43,  270 => 40,  267 => 38,  265 => 37,  263 => 36,  254 => 35,  244 => 32,  241 => 30,  239 => 29,  237 => 28,  228 => 27,  217 => 23,  214 => 21,  209 => 18,  206 => 17,  204 => 16,  202 => 15,  197 => 12,  194 => 11,  192 => 10,  188 => 9,  186 => 8,  184 => 7,  182 => 6,  173 => 5,  163 => 303,  160 => 302,  157 => 300,  155 => 289,  152 => 288,  149 => 286,  147 => 272,  144 => 271,  141 => 269,  139 => 232,  136 => 231,  134 => 201,  131 => 200,  128 => 198,  126 => 187,  123 => 186,  121 => 172,  118 => 171,  116 => 157,  113 => 156,  111 => 152,  108 => 151,  106 => 147,  104 => 140,  102 => 129,  99 => 128,  97 => 117,  94 => 116,  92 => 108,  89 => 107,  87 => 51,  84 => 50,  82 => 43,  79 => 42,  77 => 35,  74 => 34,  72 => 27,  69 => 26,  67 => 5,  64 => 4,  61 => 2,  18 => 1,);
     }
 
     public function getSourceContext()
@@ -1326,7 +1318,7 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
         {%- endif -%}
 
         {{ widget|raw }}
-        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}=\"{{ attrvalue }}\"{% endfor %}>
+        <label{% with { attr: label_attr } %}{{ block('attributes') }}{% endwith %}>
             {{- label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
             {{- form_errors(form) -}}
         </label>
@@ -1369,8 +1361,7 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
 {% block form_help -%}
     {%- if help is not empty -%}
         {%- set help_attr = help_attr|merge({class: (help_attr.class|default('') ~ ' form-text text-muted')|trim}) -%}
-
-        <small id=\"{{ id }}_help\" {% for attrname, attrvalue in help_attr %} {{ attrname }}=\"{{ attrvalue }}\"{% endfor %}>
+        <small id=\"{{ id }}_help\"{% with { attr: help_attr } %}{{ block('attributes') }}{% endwith %}>
             {%- if translation_domain is same as(false) -%}
                 {{- help -}}
             {%- else -%}
@@ -1379,6 +1370,6 @@ class __TwigTemplate_bbfb16058319000e544557c5dad670b64098678713dd011c437f03e5c1b
         </small>
     {%- endif -%}
 {%- endblock form_help %}
-", "bootstrap_4_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_layout.html.twig");
+", "bootstrap_4_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_layout.html.twig");
     }
 }

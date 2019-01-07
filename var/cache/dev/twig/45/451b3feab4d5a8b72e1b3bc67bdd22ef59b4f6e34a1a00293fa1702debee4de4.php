@@ -16,7 +16,7 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
         $_trait_0 = $this->loadTemplate("bootstrap_base_layout.html.twig", "bootstrap_3_layout.html.twig", 1);
         // line 1
         if (!$_trait_0->isTraitable()) {
-            throw new Twig_Error_Runtime('Templates "'."bootstrap_base_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
+            throw new Twig_Error_Runtime('Template "'."bootstrap_base_layout.html.twig".'" cannot be used as a trait.', 1, $this->source);
         }
         $_trait_0_blocks = $_trait_0->getBlocks();
 
@@ -460,18 +460,14 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
             }
             // line 101
             echo "<label";
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["label_attr"]) || array_key_exists("label_attr", $context) ? $context["label_attr"] : (function () { throw new Twig_Error_Runtime('Variable "label_attr" does not exist.', 101, $this->source); })()));
-            foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
-                echo " ";
-                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
-                echo "=\"";
-                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
-                echo "\"";
+            $__internal_add9db1f328aaed12ef1a33890510da978cc9cf3e50f6769d368473a9c90c217 = array("attr" => (isset($context["label_attr"]) || array_key_exists("label_attr", $context) ? $context["label_attr"] : (function () { throw new Twig_Error_Runtime('Variable "label_attr" does not exist.', 101, $this->source); })()));
+            if (!is_array($__internal_add9db1f328aaed12ef1a33890510da978cc9cf3e50f6769d368473a9c90c217)) {
+                throw new Twig_Error_Runtime('Variables passed to the "with" tag must be a hash.', 101, $this->source);
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['attrname'], $context['attrvalue'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
+            $context['_parent'] = $context;
+            $context = array_merge($context, $__internal_add9db1f328aaed12ef1a33890510da978cc9cf3e50f6769d368473a9c90c217);
+            $this->displayBlock("attributes", $context, $blocks);
+            $context = $context['_parent'];
             echo ">";
             // line 102
             echo (isset($context["widget"]) || array_key_exists("widget", $context) ? $context["widget"] : (function () { throw new Twig_Error_Runtime('Variable "widget" does not exist.', 102, $this->source); })());
@@ -755,32 +751,28 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
         if ( !twig_test_empty((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 179, $this->source); })()))) {
             // line 180
             $context["help_attr"] = twig_array_merge((isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 180, $this->source); })()), array("class" => twig_trim_filter((((twig_get_attribute($this->env, $this->source, ($context["help_attr"] ?? null), "class", array(), "any", true, true)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, ($context["help_attr"] ?? null), "class", array()), "")) : ("")) . " help-block"))));
-            // line 182
+            // line 181
             echo "<span id=\"";
-            echo twig_escape_filter($this->env, (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new Twig_Error_Runtime('Variable "id" does not exist.', 182, $this->source); })()), "html", null, true);
-            echo "_help\" ";
+            echo twig_escape_filter($this->env, (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new Twig_Error_Runtime('Variable "id" does not exist.', 181, $this->source); })()), "html", null, true);
+            echo "_help\"";
+            $__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105 = array("attr" => (isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 181, $this->source); })()));
+            if (!is_array($__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105)) {
+                throw new Twig_Error_Runtime('Variables passed to the "with" tag must be a hash.', 181, $this->source);
+            }
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["help_attr"]) || array_key_exists("help_attr", $context) ? $context["help_attr"] : (function () { throw new Twig_Error_Runtime('Variable "help_attr" does not exist.', 182, $this->source); })()));
-            foreach ($context['_seq'] as $context["attrname"] => $context["attrvalue"]) {
-                echo " ";
-                echo twig_escape_filter($this->env, $context["attrname"], "html", null, true);
-                echo "=\"";
-                echo twig_escape_filter($this->env, $context["attrvalue"], "html", null, true);
-                echo "\"";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['attrname'], $context['attrvalue'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
+            $context = array_merge($context, $__internal_128c19eb75d89ae9acc1294da2e091b433005202cb9b9351ea0c5dd5f69ee105);
+            $this->displayBlock("attributes", $context, $blocks);
+            $context = $context['_parent'];
             echo ">";
-            // line 183
-            if (((isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 183, $this->source); })()) === false)) {
-                // line 184
-                echo twig_escape_filter($this->env, (isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 184, $this->source); })()), "html", null, true);
+            // line 182
+            if (((isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 182, $this->source); })()) === false)) {
+                // line 183
+                echo twig_escape_filter($this->env, (isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 183, $this->source); })()), "html", null, true);
             } else {
-                // line 186
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 186, $this->source); })()), array(), (isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 186, $this->source); })())), "html", null, true);
+                // line 185
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans((isset($context["help"]) || array_key_exists("help", $context) ? $context["help"] : (function () { throw new Twig_Error_Runtime('Variable "help" does not exist.', 185, $this->source); })()), array(), (isset($context["translation_domain"]) || array_key_exists("translation_domain", $context) ? $context["translation_domain"] : (function () { throw new Twig_Error_Runtime('Variable "translation_domain" does not exist.', 185, $this->source); })())), "html", null, true);
             }
-            // line 188
+            // line 187
             echo "</span>";
         }
         
@@ -798,7 +790,7 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
 
     public function getDebugInfo()
     {
-        return array (  784 => 188,  781 => 186,  778 => 184,  776 => 183,  759 => 182,  757 => 180,  755 => 179,  746 => 178,  731 => 172,  728 => 171,  720 => 169,  716 => 168,  714 => 167,  708 => 166,  706 => 165,  697 => 164,  687 => 159,  685 => 158,  683 => 157,  677 => 156,  668 => 155,  658 => 152,  656 => 151,  654 => 150,  648 => 149,  639 => 148,  629 => 145,  627 => 144,  618 => 143,  608 => 140,  606 => 139,  597 => 138,  587 => 135,  585 => 134,  576 => 133,  566 => 130,  564 => 129,  555 => 128,  545 => 125,  543 => 124,  541 => 123,  532 => 122,  522 => 119,  520 => 118,  518 => 117,  516 => 116,  514 => 115,  508 => 114,  505 => 112,  503 => 111,  501 => 110,  492 => 109,  481 => 103,  477 => 102,  462 => 101,  458 => 98,  455 => 95,  454 => 94,  453 => 93,  451 => 92,  449 => 91,  446 => 89,  444 => 88,  441 => 86,  439 => 85,  437 => 84,  428 => 82,  418 => 79,  416 => 77,  407 => 76,  397 => 73,  395 => 71,  386 => 70,  376 => 67,  374 => 66,  365 => 64,  355 => 61,  353 => 60,  344 => 59,  333 => 53,  331 => 52,  329 => 51,  326 => 49,  324 => 48,  322 => 47,  313 => 46,  302 => 42,  300 => 41,  298 => 40,  295 => 38,  293 => 37,  291 => 36,  282 => 35,  271 => 31,  267 => 29,  261 => 27,  259 => 26,  257 => 25,  251 => 23,  249 => 22,  246 => 21,  243 => 20,  240 => 19,  238 => 18,  229 => 17,  219 => 14,  217 => 13,  208 => 12,  198 => 9,  195 => 7,  193 => 6,  184 => 5,  174 => 178,  171 => 177,  168 => 175,  166 => 164,  163 => 163,  160 => 161,  158 => 155,  155 => 154,  153 => 148,  150 => 147,  148 => 143,  145 => 142,  143 => 138,  140 => 137,  138 => 133,  135 => 132,  133 => 128,  130 => 127,  128 => 122,  125 => 121,  123 => 109,  120 => 108,  117 => 106,  115 => 82,  112 => 81,  110 => 76,  107 => 75,  105 => 70,  102 => 69,  100 => 64,  97 => 63,  95 => 59,  92 => 58,  89 => 56,  87 => 46,  84 => 45,  82 => 35,  79 => 34,  77 => 17,  74 => 16,  72 => 12,  69 => 11,  67 => 5,  64 => 4,  61 => 2,  18 => 1,);
+        return array (  776 => 187,  773 => 185,  770 => 183,  768 => 182,  755 => 181,  753 => 180,  751 => 179,  742 => 178,  727 => 172,  724 => 171,  716 => 169,  712 => 168,  710 => 167,  704 => 166,  702 => 165,  693 => 164,  683 => 159,  681 => 158,  679 => 157,  673 => 156,  664 => 155,  654 => 152,  652 => 151,  650 => 150,  644 => 149,  635 => 148,  625 => 145,  623 => 144,  614 => 143,  604 => 140,  602 => 139,  593 => 138,  583 => 135,  581 => 134,  572 => 133,  562 => 130,  560 => 129,  551 => 128,  541 => 125,  539 => 124,  537 => 123,  528 => 122,  518 => 119,  516 => 118,  514 => 117,  512 => 116,  510 => 115,  504 => 114,  501 => 112,  499 => 111,  497 => 110,  488 => 109,  477 => 103,  473 => 102,  462 => 101,  458 => 98,  455 => 95,  454 => 94,  453 => 93,  451 => 92,  449 => 91,  446 => 89,  444 => 88,  441 => 86,  439 => 85,  437 => 84,  428 => 82,  418 => 79,  416 => 77,  407 => 76,  397 => 73,  395 => 71,  386 => 70,  376 => 67,  374 => 66,  365 => 64,  355 => 61,  353 => 60,  344 => 59,  333 => 53,  331 => 52,  329 => 51,  326 => 49,  324 => 48,  322 => 47,  313 => 46,  302 => 42,  300 => 41,  298 => 40,  295 => 38,  293 => 37,  291 => 36,  282 => 35,  271 => 31,  267 => 29,  261 => 27,  259 => 26,  257 => 25,  251 => 23,  249 => 22,  246 => 21,  243 => 20,  240 => 19,  238 => 18,  229 => 17,  219 => 14,  217 => 13,  208 => 12,  198 => 9,  195 => 7,  193 => 6,  184 => 5,  174 => 178,  171 => 177,  168 => 175,  166 => 164,  163 => 163,  160 => 161,  158 => 155,  155 => 154,  153 => 148,  150 => 147,  148 => 143,  145 => 142,  143 => 138,  140 => 137,  138 => 133,  135 => 132,  133 => 128,  130 => 127,  128 => 122,  125 => 121,  123 => 109,  120 => 108,  117 => 106,  115 => 82,  112 => 81,  110 => 76,  107 => 75,  105 => 70,  102 => 69,  100 => 64,  97 => 63,  95 => 59,  92 => 58,  89 => 56,  87 => 46,  84 => 45,  82 => 35,  79 => 34,  77 => 17,  74 => 16,  72 => 12,  69 => 11,  67 => 5,  64 => 4,  61 => 2,  18 => 1,);
     }
 
     public function getSourceContext()
@@ -903,7 +895,7 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
                 {% set label = name|humanize %}
             {%- endif -%}
         {%- endif -%}
-        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}=\"{{ attrvalue }}\"{% endfor %}>
+        <label{% with { attr: label_attr } %}{{ block('attributes') }}{% endwith %}>
             {{- widget|raw }} {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
         </label>
     {%- endif -%}
@@ -983,8 +975,7 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
 {% block form_help -%}
     {%- if help is not empty -%}
         {%- set help_attr = help_attr|merge({class: (help_attr.class|default('') ~ ' help-block')|trim}) -%}
-
-        <span id=\"{{ id }}_help\" {% for attrname, attrvalue in help_attr %} {{ attrname }}=\"{{ attrvalue }}\"{% endfor %}>
+        <span id=\"{{ id }}_help\"{% with { attr: help_attr } %}{{ block('attributes') }}{% endwith %}>
             {%- if translation_domain is same as(false) -%}
                 {{- help -}}
             {%- else -%}
@@ -993,6 +984,6 @@ class __TwigTemplate_e7a0de6c99436a71c15419f0feefded391eda314951bd56349266cab363
         </span>
     {%- endif -%}
 {%- endblock form_help %}
-", "bootstrap_3_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_3_layout.html.twig");
+", "bootstrap_3_layout.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_3_layout.html.twig");
     }
 }

@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace App\DDD\Application\UseCase\Command\User\Registration\Interfaces;
 
 /**
- * class RegistrationCommandInterface
+ * Interface RegistrationCommandInterface
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */

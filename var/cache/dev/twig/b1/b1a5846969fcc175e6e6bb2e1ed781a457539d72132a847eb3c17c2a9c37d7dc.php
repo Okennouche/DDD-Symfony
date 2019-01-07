@@ -49,6 +49,6 @@ class __TwigTemplate_836753150df62aa823ccf20908b58be616f72cbb5dbeed73c5851301228
     public function getSourceContext()
     {
         return new Twig_Source("<?php echo \$view['form']->formEncodeCurrency(\$money_pattern, \$view['form']->block(\$form, 'form_widget_simple')) ?>
-", "@Framework/Form/money_widget.html.php", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/framework-bundle/Resources/views/Form/money_widget.html.php");
+", "@Framework/Form/money_widget.html.php", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/framework-bundle/Resources/views/Form/money_widget.html.php");
     }
 }

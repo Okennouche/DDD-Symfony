@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 /**
- * class RegistrationActionInterface
+ * Interface RegistrationActionInterface
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */

@@ -12,8 +12,8 @@ security:
                 class: App\DDD\Domain\Entity\User\User
                 property: email
 
-        #db_custom_provider:
-            #id: App\DDD\Security\User\UserProvider
+        db_custom_provider:
+            id: App\DDD\Security\User\Provider\UserProvider
 
     firewalls:
 
@@ -23,7 +23,7 @@ security:
 
         main:
             anonymous: ~
-            provider: database_users
+            provider: db_custom_provider
             form_login:
                 login_path: security_login
                 check_path: security_login

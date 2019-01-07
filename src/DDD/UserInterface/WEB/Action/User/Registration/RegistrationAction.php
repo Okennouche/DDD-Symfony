@@ -14,20 +14,21 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Registration;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\DDD\Infrastructure\User\Form\RegistrationType;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
 
 /**
- * class RegistrationAction
+ * Class RegistrationAction
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  * @Route("/registration", name="security_registration")
@@ -35,7 +36,6 @@ use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationAc
  */
 class RegistrationAction implements RegistrationActionInterface
 {
-
 	/**
 	 * @var Environment $twig
 	 */
@@ -88,7 +88,11 @@ class RegistrationAction implements RegistrationActionInterface
 		$form->handleRequest($request);
 
 		if($form->isSubmitted() && $form->isValid()) {
-			$this->bus->dispatch($form->getData());
+
+			$registrationCommand = $form->getData();
+
+			$this->bus->dispatch($registrationCommand);
+
 			return new RedirectResponse($this->urlGenerator->generate('security_login'));
 		}
 

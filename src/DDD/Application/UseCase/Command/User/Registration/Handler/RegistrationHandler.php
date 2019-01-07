@@ -15,9 +15,8 @@ declare(strict_types=1);
 namespace App\DDD\Application\UseCase\Command\User\Registration\Handler;
 
 use App\DDD\Domain\Entity\User\User;
+use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use App\DDD\Infrastructure\User\Repository\UserQueryRepository;
-;
-use App\DDD\Security\Encoder\Interfaces\EncoderInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationHandlerInterface;

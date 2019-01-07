@@ -118,6 +118,6 @@ class __TwigTemplate_fcf8f387f2264737ce5a3a962b3953be8010d3e2239da6944a7dd534907
         </div>
     </div>
 
-{% endblock %}", "User/Registration/registration.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/src/DDD/UserInterface/WEB/Templates/User/Registration/registration.html.twig");
+{% endblock %}", "User/Registration/registration.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/src/DDD/UserInterface/WEB/Templates/User/Registration/registration.html.twig");
     }
 }

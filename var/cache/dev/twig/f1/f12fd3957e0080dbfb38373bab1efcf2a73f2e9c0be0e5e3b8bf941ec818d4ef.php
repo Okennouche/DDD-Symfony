@@ -300,7 +300,7 @@ class __TwigTemplate_07b1d1b3299b882ee761015aeb7e943552b71f1388e5aa970fbbc23eb93
         }
         // line 99
         echo "
-        <strong>E-Mails</strong>
+        <strong>E-mails</strong>
         ";
         // line 101
         if ((twig_get_attribute($this->env, $this->source, (isset($context["collector"]) || array_key_exists("collector", $context) ? $context["collector"] : (function () { throw new Twig_Error_Runtime('Variable "collector" does not exist.', 101, $this->source); })()), "messageCount", array()) > 0)) {
@@ -820,7 +820,7 @@ class __TwigTemplate_07b1d1b3299b882ee761015aeb7e943552b71f1388e5aa970fbbc23eb93
             <span class=\"icon\">{{ include('@Swiftmailer/Collector/icon.svg') }}</span>
         {% endif %}
 
-        <strong>E-Mails</strong>
+        <strong>E-mails</strong>
         {% if collector.messageCount > 0 %}
             <span class=\"count\">
                 <span>{{ collector.messageCount }}</span>
@@ -992,6 +992,6 @@ class __TwigTemplate_07b1d1b3299b882ee761015aeb7e943552b71f1388e5aa970fbbc23eb93
         {% endif %}
     {% endfor %}
 {% endblock %}
-", "@Swiftmailer/Collector/swiftmailer.html.twig", "/home/topdeveloppement/LAB/PHP/DDD-Symfony/vendor/symfony/swiftmailer-bundle/Resources/views/Collector/swiftmailer.html.twig");
+", "@Swiftmailer/Collector/swiftmailer.html.twig", "/home/topdeveloppement/LAB/PHP/DDD/DDD-Symfony/vendor/symfony/swiftmailer-bundle/Resources/views/Collector/swiftmailer.html.twig");
     }
 }

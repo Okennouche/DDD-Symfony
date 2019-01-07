@@ -28,7 +28,7 @@ use App\DDD\Infrastructure\User\DataMapper\Interfaces\RegistrationMapperInterfac
 
 
 /**
- * class RegistrationMapper
+ * Class RegistrationMapper
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */
@@ -109,7 +109,7 @@ final class RegistrationMapper implements RegistrationMapperInterface
 		}
 
 		$data = new RegistrationCommand(
-			new Uuid(),
+			Uuid::uuid(),
 			$username->toString(),
 			$email->toString(),
 			$password->toString()
