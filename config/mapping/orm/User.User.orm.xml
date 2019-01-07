@@ -20,7 +20,7 @@
 
         <field name="confirmationToken" column="confirmation_token" type="string" length="255" unique="true" nullable="true"/>
 
-        <field name="isEnabled" column="is_enabled" type="boolean" nullable="true"/>
+        <field name="isActive" column="is_active" type="boolean" nullable="true"/>
 
         <field name="createdAt" column="created_at" type="datetime_immutable" nullable="false"/>
 

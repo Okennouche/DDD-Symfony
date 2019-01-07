@@ -12,13 +12,13 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Domain\Security\Encoder\Interfaces;
+namespace App\DDD\Security\Encoder\Interfaces;
 
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 
 /**
- * interface EncoderInterface
+ * Interface EncoderInterface
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */

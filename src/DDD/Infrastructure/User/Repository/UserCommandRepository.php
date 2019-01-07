@@ -16,10 +16,8 @@ namespace App\DDD\Infrastructure\User\Repository;
 
 use App\DDD\Domain\Entity\User\User;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 
 
 /**
@@ -27,9 +25,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */
-class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface, UserLoaderInterface
+class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface
 {
-
+	/**
+	 * UserCommandRepository constructor.
+	 *
+	 * @param RegistryInterface $registry
+	 */
 	public function __construct(RegistryInterface $registry)
 	{
 		parent::__construct($registry, User::class);
@@ -42,24 +44,5 @@ class UserCommandRepository extends ServiceEntityRepository implements UserComma
 	{
 		$this->_em->persist($user);
 		$this->_em->flush();
-	}
-
-	/**
-	 * Loads the user for the given username.
-	 *
-	 * This method must return null if the user is not found.
-	 *
-	 * @param string $username The username
-	 *
-	 * @return UserInterface|null
-	 */
-	public function loadUserByUsername($username)
-	{
-		return $this->createQueryBuilder('u')
-			->where('u.username = :username OR u.email = :email')
-			->setParameter('username', $username)
-			->setParameter('email', $username)
-			->getQuery()
-			->getOneOrNullResult();
 	}
 }

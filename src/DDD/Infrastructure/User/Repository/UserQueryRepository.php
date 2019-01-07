@@ -27,16 +27,18 @@ use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
  */
 class UserQueryRepository extends ServiceEntityRepository implements UserQueryRepositoryInterface
 {
-
+	/**
+	 * UserQueryRepository constructor.
+	 *
+	 * @param RegistryInterface $registry
+	 */
 	public function __construct(RegistryInterface $registry)
 	{
 		parent::__construct($registry, User::class);
 	}
 
 	/**
-	 * @param string $email
-	 *
-	 * @return User|null
+	 * @inheritdoc
 	 */
 	public function findOneByEmail(string $email): ?User
 	{
@@ -45,6 +47,20 @@ class UserQueryRepository extends ServiceEntityRepository implements UserQueryRe
 					->setParameter('email', $email)
 					->getQuery()
 		            ->useResultCache(true, null, 'user.findByEmail'. $email)
+					->getOneOrNullResult()
+			;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function loadUserByUsername($usernameOrEmail): ?User
+	{
+		return $this->createQueryBuilder('u')
+					->where('u.username = :username OR u.email = :email')
+					->setParameter('username', $usernameOrEmail)
+					->setParameter('email', $usernameOrEmail)
+					->getQuery()
 					->getOneOrNullResult()
 			;
 	}

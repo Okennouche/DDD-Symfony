@@ -18,7 +18,7 @@ use App\DDD\Domain\Entity\User\User;
 
 
 /**
- * class UserQueryRepositoryInterface
+ * Interface UserQueryRepositoryInterface
  *
  * @author Omar Kennouche <o.kennouche@gmail.com>
  */
@@ -30,4 +30,11 @@ interface UserQueryRepositoryInterface
 	 * @return User|null
 	 */
 	public function findOneByEmail(string $email): ?User;
+
+	/**
+	 * @param $usernameOrEmail
+	 *
+	 * @return User|null
+	 */
+	public function loadUserByUsername($usernameOrEmail): ?User;
 }
