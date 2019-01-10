@@ -14,7 +14,9 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Registration;
 
+use Symfony\Component\Form\Form;
 use Twig\Environment;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +24,9 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\DDD\Infrastructure\User\Form\RegistrationType;
+use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use App\DDD\Application\UseCase\Query\User\FindByEmail\EmailExistQuery;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
 /**
@@ -88,16 +92,22 @@ class RegistrationAction implements RegistrationActionInterface
 
 			$registrationCommand = $form->getData();
 
-			$this->bus->dispatch($registrationCommand);
-
-			return new RedirectResponse($this->urlGenerator->generate('security_login'));
+			try {
+				$this->bus->dispatch(new EmailExistQuery($registrationCommand->getEmail()));
+				$this->bus->dispatch($registrationCommand);
+				return new RedirectResponse($this->urlGenerator->generate('security_login'));
+			} catch (EmailAlreadyExistException $exception) {
+				dump($exception->getMessage());
+				$form->get('email')->addError(new FormError($exception->getMessage()));
+			}
 		}
 
 		return new Response(
 			$this->twig->render(
 				"User/Registration/registration.html.twig",
 				[
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'error'=> ''
 				]
 			)
 		);

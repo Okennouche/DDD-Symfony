@@ -25,6 +25,10 @@
         <source>password_confirm</source>
         <target>Confirmer le mot de passe</target>
       </trans-unit>
+      <trans-unit id="1TsvHMM" resname="registration_email_all_ready_exist">
+        <source>registration_email_all_ready_exist</source>
+        <target>Cet email déja enregistré</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

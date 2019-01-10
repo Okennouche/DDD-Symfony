@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 29/12/18 20:23
+ * @ Created on 29/12/18 20:23
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -14,13 +14,14 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\ValueObject\User\Interfaces;
 
-
 use App\DDD\Domain\ValueObject\User\Username;
 
 /**
  * Interface UsernameInterface
  *
  * @package App\DDD\Domain\ValueObject\User\Interfaces
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 interface UsernameInterface
 {

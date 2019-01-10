@@ -20,21 +20,21 @@ use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 
 /**
- * Interface RegistrationHandlerInterface
+ * Interface RegistrationCommandHandlerInterface
  *
  * @package App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface RegistrationHandlerInterface extends MessageHandlerInterface
+interface RegistrationCommandHandlerInterface extends MessageHandlerInterface
 {
 	/**
-	 * RegistrationHandlerInterface constructor.
+	 * RegistrationCommandHandlerInterface constructor.
 	 *
-	 * @param UserCommandRepositoryInterface $repository
+	 * @param UserCommandRepositoryInterface $commandRepository
 	 * @param EncoderInterface               $encoder
 	 */
-	public function __construct(UserCommandRepositoryInterface $repository, EncoderInterface $encoder);
+	public function __construct(UserCommandRepositoryInterface $commandRepository, EncoderInterface $encoder);
 
 	/**
 	 * @param RegistrationCommandInterface $command

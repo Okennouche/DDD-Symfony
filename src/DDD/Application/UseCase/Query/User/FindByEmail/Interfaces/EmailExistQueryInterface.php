@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  *
- * @ Created on 28/12/18 13:24
+ * @ Created on 10/01/2019 15:36
  * @ This file is part of the DDD project.
  * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
@@ -12,28 +12,19 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Domain\ValueObject\User\Interfaces;
-
-use App\DDD\Domain\ValueObject\User\Uuid;
+namespace App\DDD\Application\UseCase\Query\User\FindByEmail\Interfaces;
 
 /**
- * Interface UuidInterface
+ * Interface EmailExistQueryInterface
  *
- * @package App\DDD\Domain\ValueObject\User\Interfaces
+ * @package App\DDD\Application\UseCase\Query\User\FindByEmail\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface UuidInterface
+interface EmailExistQueryInterface
 {
-	/**
-	 * @param string $uuid
-	 *
-	 * @return Uuid
-	 */
-	public static function fromString(string $uuid): Uuid;
-
 	/**
 	 * @return string
 	 */
-	public function toString(): string;
+	public function getEmail(): string;
 }

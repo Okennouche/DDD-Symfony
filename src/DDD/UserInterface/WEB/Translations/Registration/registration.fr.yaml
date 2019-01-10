@@ -3,3 +3,4 @@ username: Nom d'utilisateur
 email: Email
 password: Mot de passe
 password_confirm: Confirmer le mot de passe
+registration_email_all_ready_exist: Cet email déja enregistré

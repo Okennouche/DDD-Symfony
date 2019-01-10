@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 05/01/19 18:54
+ * @ Created on 05/01/19 18:54
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -17,15 +17,15 @@ namespace App\DDD\Domain\ValueObject\User;
 use Assert\Assertion;
 use App\DDD\Domain\ValueObject\User\Interfaces\UuidInterface;
 
-
 /**
- * class Uuid
+ * Class Uuid
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Domain\ValueObject\User
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 final class Uuid implements UuidInterface
 {
-
 	/**
 	 * @var $uuid
 	 */

@@ -16,24 +16,23 @@ namespace App\DDD\Application\UseCase\Command\User\Registration\Handler;
 
 use App\DDD\Domain\Entity\User\User;
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
-use App\DDD\Infrastructure\User\Repository\UserQueryRepository;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationHandlerInterface;
+use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationCommandHandlerInterface;
 
 /**
- * Class RegistrationHandler
+ * Class RegistrationCommandCommandHandler
  *
  * @package App\DDD\Application\UseCase\Command\User\Registration\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class RegistrationHandler implements RegistrationHandlerInterface
+final class RegistrationCommandCommandHandler implements RegistrationCommandHandlerInterface
 {
 	/**
-	 * @var $userRepository UserQueryRepository
+	 * @var $userCommandRepository UserCommandRepositoryInterface
 	 */
-	private $userRepository;
+	private $userCommandRepository;
 
 	/**
 	 * @var $encoder EncoderInterface
@@ -44,10 +43,10 @@ final class RegistrationHandler implements RegistrationHandlerInterface
 	 * @inheritdoc
 	 */
 	public function __construct(
-		UserCommandRepositoryInterface $repository,
+		UserCommandRepositoryInterface $commandRepository,
 		EncoderInterface $encoder
 	) {
-		$this->userRepository = $repository;
+		$this->userCommandRepository = $commandRepository;
 		$this->encoder = $encoder;
 	}
 
@@ -63,6 +62,6 @@ final class RegistrationHandler implements RegistrationHandlerInterface
 			$this->encoder->encodePassword($command->getPassword(), null)
 		);
 
-		$this->userRepository->store($user);
+		$this->userCommandRepository->store($user);
 	}
 }
