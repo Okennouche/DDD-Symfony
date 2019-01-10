@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 04/01/19 06:56
+ * @ Created on 04/01/19 06:56
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -19,13 +19,14 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 
-
 /**
- * class UserCommandRepository
+ * Class UserCommandRepository
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Infrastructure\User\Repository
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface
+final class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface
 {
 	/**
 	 * UserCommandRepository constructor.

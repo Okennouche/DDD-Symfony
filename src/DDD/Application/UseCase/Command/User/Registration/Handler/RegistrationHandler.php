@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 28/12/18 05:15
+ * @ Created on 28/12/18 05:15
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -25,6 +25,8 @@ use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\Reg
  * Class RegistrationHandler
  *
  * @package App\DDD\Application\UseCase\Command\User\Registration\Handler
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 final class RegistrationHandler implements RegistrationHandlerInterface
 {

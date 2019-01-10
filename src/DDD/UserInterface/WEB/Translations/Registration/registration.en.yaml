@@ -1,0 +1,5 @@
+registration: Registration
+username: Username
+email: E-mail
+password: Password
+password_confirm: Confirm password

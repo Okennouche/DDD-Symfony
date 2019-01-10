@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 05/01/19 23:20
+ * @ Created on 05/01/19 23:20
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -14,24 +14,17 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Login;
 
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Twig\Environment;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\DDD\Infrastructure\User\Form\LoginType;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\DDD\UserInterface\WEB\Action\User\Login\Interfaces\LoginActionInterface;
 
-
 /**
- * class LoginAction
+ * Class LoginAction
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
- * @Route("/login", name="security_login")
- *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
+ * @Route({"en": "/login", "fr": "/connexion"}, name="security_login")
  */
 final class LoginAction implements LoginActionInterface
 {
@@ -41,45 +34,21 @@ final class LoginAction implements LoginActionInterface
 	private $twig;
 
 	/**
-	 * @var FormFactoryInterface
-	 */
-	private $formFactory;
-
-	/**
-	 * @var MessageBusInterface
-	 */
-	private $bus;
-
-	/**
-	 * @var UrlGeneratorInterface
-	 */
-	private $urlGenerator;
-
-	/**
 	 * @var AuthenticationUtils
 	 */
 	private $authenticationUtils;
 
 	/**
-	 * RegistrationAction constructor.
+	 * LoginAction constructor.
 	 *
-	 * @param Environment           $twig
-	 * @param FormFactoryInterface  $formFactory
-	 * @param MessageBusInterface   $bus
-	 * @param UrlGeneratorInterface $urlGenerator
-	 * @param AuthenticationUtils   $authenticationUtils
+	 * @param Environment         $twig
+	 * @param AuthenticationUtils $authenticationUtils
 	 */
 	public function __construct(
 		Environment $twig,
-		FormFactoryInterface $formFactory,
-		MessageBusInterface $bus,
-		UrlGeneratorInterface $urlGenerator,
 		AuthenticationUtils $authenticationUtils
 	) {
 		$this->twig = $twig;
-		$this->formFactory = $formFactory;
-		$this->bus = $bus;
-		$this->urlGenerator = $urlGenerator;
 		$this->authenticationUtils = $authenticationUtils;
 	}
 
@@ -90,14 +59,10 @@ final class LoginAction implements LoginActionInterface
 	{
 		$error        = $authenticationUtils->getLastAuthenticationError();
 		$lastUsername = $authenticationUtils->getLastUsername();
-
-		//$form = $this->formFactory->create(LoginType::class, null);
-
 		return new Response(
 			$this->twig->render(
 				"User/Login/login.html.twig",
 				[
-					//'form'  => $form->createView(),
 					'last_username' => $lastUsername,
 					'error' => $error
 				]

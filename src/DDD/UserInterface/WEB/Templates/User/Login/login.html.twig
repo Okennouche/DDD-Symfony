@@ -2,26 +2,46 @@
 
 {% block body %}
 
-    <div class="container mt-5">
+    <div class="container">
 
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+        <div class="col-6 mx-auto mt-5">
 
-        <form action="{{ path('security_login') }}" name="login" method="post">
-            <div id="login">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="_email" class="rounded-0 form-control" value="{{ last_username }}">
+            {% if error %}
+                <div class="alert alert-danger rounded-0">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
-                <div class="form-group">
-                    <label for="password" class="required">Mot de passe</label>
-                    <input type="password" id="password" name="_password" required="required" class="rounded-0 form-control">
+            {% endif %}
+
+            <form action="{{ path('security_login') }}" name="login" method="post">
+                <div id="login">
+                    <div class="form-group">
+                        <label for="email">
+                            {% trans from 'login' %}email{% endtrans %}
+                        </label>
+                        <input type="email" id="email" name="_email" class="rounded-0 form-control" value="{{ last_username }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="required">
+                            {% trans from 'login' %}password{% endtrans %}
+                        </label>
+                        <input type="password" id="password" name="_password" required="required" class="rounded-0 form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="remember_me">
+                            {% trans from 'login' %}remember_me{% endtrans %}
+                        </label>
+                        <input type="checkbox" id="remember_me" name="_remember_me"/>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                 </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-            </div>
-            <button type="submit" class="btn btn-block btn-primary rounded-0">Connexion</button>
-        </form>
+
+                <button type="submit" class="btn btn-block btn-primary rounded-0">
+                    {% trans from 'login' %}login{% endtrans %}
+                </button>
+
+            </form>
+        </div>
+
     </div>
 
 {% endblock %}

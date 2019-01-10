@@ -3,16 +3,29 @@
 {% block body %}
 
     <div class="container mt-5">
-        <div class="col-6 mx-auto text-center">
-           <h3> Bienvenue ! {{ app.user.username }}</h3>
-            Welcome to my DDD experiment
-        </div>
-        <div class="col-6 mx-auto mt-5">
-            <a href="{{ path('security_login') }}" class="btn btn-block btn-success rounded-0 my-2">{{ 'login.login' |trans(domain= 'login') }}</a>
-        </div>
-        <div class="col-6 mx-auto">
-            <a href="{{ path('security_registration') }}" class="btn btn-block btn-primary rounded-0 my-2">{{ 'registration.registration' |trans(domain= 'registration') }}</a>
-        </div>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <div class="col-6 mx-auto text-center">
+                {% trans from 'home' %}welcome{% endtrans %}
+            </div>
+            <div class="col-6 mx-auto">
+                <a href="{{ path('security_logout') }}" class="btn btn-block btn-warning rounded-0 my-2">
+                    {% trans from 'logout' %}logout{% endtrans %}
+                </a>
+            </div>
+        {% else %}
+            <div class="col-6 mx-auto mt-5">
+                <a href="{{ path('security_login') }}" class="btn btn-block btn-success rounded-0 my-2">
+                    {% trans from 'login' %}login{% endtrans %}
+                </a>
+            </div>
+            <div class="col-6 mx-auto">
+                <a href="{{ path('security_registration') }}" class="btn btn-block btn-primary rounded-0 my-2">
+                    {% trans from 'registration' %}registration{% endtrans %}
+                </a>
+            </div>
+        {% endif %}
+
     </div>
 
 {% endblock %}

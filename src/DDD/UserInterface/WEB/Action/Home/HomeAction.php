@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 06/01/19 12:36
+ * @ Created on 06/01/19 12:36
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -20,17 +20,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\DDD\UserInterface\WEB\Action\Home\Interfaces\HomeActionInterface;
 
-
 /**
- * class HomeAction
+ * Class HomeAction
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
- * @Route("/home", name="home")
+ * @package App\DDD\UserInterface\WEB\Action\Home
  *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
+ * @Route({"en": "/homepage", "fr": "/accueil"}, name="home")
  */
 final class HomeAction implements HomeActionInterface
 {
-
 	/**
 	 * @var Environment
 	 */

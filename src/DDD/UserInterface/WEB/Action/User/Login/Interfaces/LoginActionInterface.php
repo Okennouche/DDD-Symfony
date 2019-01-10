@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 05/01/19 23:20
+ * @ Created on 05/01/19 23:20
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -18,9 +18,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 /**
- * class LoginActionInterface
+ * Interface LoginActionInterface
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\UserInterface\WEB\Action\User\Login\Interfaces
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 interface LoginActionInterface
 {

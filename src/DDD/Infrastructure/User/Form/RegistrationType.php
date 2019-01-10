@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 30/12/18 00:28
+ * @ Created on 30/12/18 00:28
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -23,11 +23,12 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\DDD\Infrastructure\User\DataMapper\RegistrationMapper;
 use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 
-
 /**
  * Class RegistrationType
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Infrastructure\User\Form
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 class RegistrationType extends AbstractType
 {
@@ -42,7 +43,7 @@ class RegistrationType extends AbstractType
 				'username',
 				TextType::class,
 				[
-					'label' => 'registration.username',
+					'label' => 'username',
 					'required' => false,
 					'attr' => [
 						'class' => 'rounded-0'
@@ -53,7 +54,7 @@ class RegistrationType extends AbstractType
 				'email',
 				EmailType::class,
 				[
-					'label' => 'registration.email',
+					'label' => 'email',
 					'required' => false,
 					'attr' => [
 						'class' => 'rounded-0'
@@ -64,7 +65,7 @@ class RegistrationType extends AbstractType
 				'password',
 				PasswordType::class,
 				[
-					'label' => 'registration.password',
+					'label' => 'password',
 					'attr' => [
 						'class' => 'rounded-0'
 					]
@@ -75,7 +76,7 @@ class RegistrationType extends AbstractType
 				PasswordType::class,
 				[
 					'mapped' => false,
-					'label' => 'registration.password.confirm',
+					'label' => 'password_confirm',
 					'attr' => [
 						'class' => 'rounded-0'
 					]

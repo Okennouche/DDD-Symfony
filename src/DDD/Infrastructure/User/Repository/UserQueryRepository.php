@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 04/01/19 06:56
+ * @ Created on 04/01/19 06:56
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -21,11 +21,13 @@ use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 
 
 /**
- * class UserQueryRepository
+ * Class UserQueryRepository
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Infrastructure\User\Repository
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class UserQueryRepository extends ServiceEntityRepository implements UserQueryRepositoryInterface
+final class UserQueryRepository extends ServiceEntityRepository implements UserQueryRepositoryInterface
 {
 	/**
 	 * UserQueryRepository constructor.
@@ -35,20 +37,6 @@ class UserQueryRepository extends ServiceEntityRepository implements UserQueryRe
 	public function __construct(RegistryInterface $registry)
 	{
 		parent::__construct($registry, User::class);
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function findOneByEmail(string $email): ?User
-	{
-		return $this->createQueryBuilder('user')
-					->where('user.email = :email')
-					->setParameter('email', $email)
-					->getQuery()
-		            ->useResultCache(true, null, 'user.findByEmail'. $email)
-					->getOneOrNullResult()
-			;
 	}
 
 	/**

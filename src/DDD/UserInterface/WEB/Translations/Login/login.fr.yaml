@@ -1,4 +1,5 @@
-login:
-    login: Connexion
-    email: Email
-    password: Mot de passe
+login: Connexion
+email: Email
+password: Mot de passe
+remember_me: Se souvenir de moi
+login_error_email_username: 'Identifiant / mot de passe invalide'

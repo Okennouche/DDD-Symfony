@@ -1,3 +1,4 @@
+# Check all configuration command available : bin/console config:dump-reference security
 security:
 
     encoders:
@@ -6,11 +7,6 @@ security:
             cost: 12
 
     providers:
-
-        database_users:
-            entity:
-                class: App\DDD\Domain\Entity\User\User
-                property: email
 
         db_custom_provider:
             id: App\DDD\Security\User\Provider\UserProvider
@@ -21,18 +17,61 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        secutity_firewall:
+            guard:
+                provider: db_custom_provider
+                authenticators:
+                - App\DDD\Security\User\Authenticator\LoginFormAuthenticator
             anonymous: ~
-            provider: db_custom_provider
+
             form_login:
-                login_path: security_login
-                check_path: security_login
-                default_target_path: home
-                username_parameter: _email
-                password_parameter: _password
+                provider:             db_custom_provider
+                remember_me:          true
+                success_handler:      ~
+                failure_handler:      ~
+                check_path:           security_login
+                use_forward:          false
+                require_previous_session: false
+                username_parameter:   _email
+                password_parameter:   _password
+                csrf_parameter:       _csrf_token
+                csrf_token_id:        authenticate
+                post_only:            true
+                always_use_default_target_path: false
+                default_target_path:  /home
+                login_path:           security_login
+                target_path_parameter: _target_path
+                use_referer:          false
+                failure_path:         null
+                failure_forward:      false
+                failure_path_parameter: _failure_path
+                #csrf_token_generator: ~
+
+            logout:
+                path:                 security_logout
+                target:               security_login
+                success_handler:      ~
+                invalidate_session:   true
+
+            remember_me:
+                secret:               '%kernel.secret%'
+                token_provider:       ~
+                user_providers:       []
+                catch_exceptions:     true
+                name:                 ddd_remember_me
+                lifetime:             2592000 # 30 days in seconds
+                path:                 /
+                domain:               null
+                secure:               false # One of true; false; "auto"
+                httponly:             true
+                samesite:             null # One of null; "lax"; "strict"
+                always_remember_me:   false
+                remember_me_parameter: _remember_me
 
     access_control:
         # matches /home
         - { path: ^/home, roles: ROLE_USER }
-        # matches /admin/* except for anything matching the above rule
+        # matches /login
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # matches /admin/*
         - { path: ^/admin, roles: ROLE_ADMIN }

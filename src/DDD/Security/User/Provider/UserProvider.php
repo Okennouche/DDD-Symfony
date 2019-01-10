@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 07/01/2019 14:59
+ * @ Created on 07/01/2019 14:59
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -21,11 +21,12 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 
-
 /**
  * Class UserProvider
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Security\User\Provider
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 class UserProvider implements UserProviderInterface
 {

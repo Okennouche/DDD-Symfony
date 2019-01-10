@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 30/12/18 12:04
+ * @ Created on 30/12/18 12:04
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Registration;
 
-use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,13 +25,11 @@ use App\DDD\Infrastructure\User\Form\RegistrationType;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
-
 /**
  * Class RegistrationAction
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
- * @Route("/registration", name="security_registration")
- *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
+ * @Route({"en": "/registration", "fr": "/inscription"}, name="security_registration", methods={"GET", "POST"})
  */
 class RegistrationAction implements RegistrationActionInterface
 {

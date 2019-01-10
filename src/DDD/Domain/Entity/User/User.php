@@ -86,6 +86,7 @@ class User implements UserInterface, \Serializable
 		$this->username = $username;
 		$this->email = $email;
 		$this->password = $password;
+		$this->roles = ['ROLE_USER'];
 		$this->createdAt = new \DateTimeImmutable();
 	}
 
@@ -126,11 +127,7 @@ class User implements UserInterface, \Serializable
 	 */
 	public function getRoles(): array
 	{
-		$roles = $this->roles;
-
-		$roles[] = 'ROLE_USER';
-
-		return array_unique($roles);
+		return array_unique($this->roles);
 	}
 
 	/**

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 05/01/19 19:47
+ * @ Created on 05/01/19 19:47
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -17,11 +17,12 @@ namespace App\DDD\Security\User\Encoder;
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
 
-
 /**
  * Class Encoder
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Security\User\Encoder
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 class Encoder implements EncoderInterface
 {

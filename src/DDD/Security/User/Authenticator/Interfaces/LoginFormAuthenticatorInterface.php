@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  *
- * @ Created on 05/01/19 19:48
+ * @ Created on 08/01/2019 10:22
  * @ This file is part of the DDD project.
  * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
@@ -12,17 +12,17 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Security\User\Encoder\Interfaces;
+namespace App\DDD\Security\User\Authenticator\Interfaces;
 
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 /**
- * Interface EncoderInterface
+ * Interface LoginFormAuthenticatorInterface
  *
- * @package App\DDD\Security\User\Encoder\Interfaces
+ * @package App\DDD\Security\User\Authenticator\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface EncoderInterface extends PasswordEncoderInterface
+interface LoginFormAuthenticatorInterface
 {
+
 }
