@@ -19,7 +19,6 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 
-
 /**
  * Class UserQueryRepository
  *
@@ -59,6 +58,7 @@ final class UserQueryRepository extends ServiceEntityRepository implements UserQ
 	public function existsEmail(string $email)
 	{
 		return $this->createQueryBuilder('u')
+					->select('u.uuid')
 					->where('u.email = :email')
 					->setParameter('email', $email)
 					->getQuery()

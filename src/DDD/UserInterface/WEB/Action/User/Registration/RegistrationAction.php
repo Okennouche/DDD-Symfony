@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Registration;
 
-use Symfony\Component\Form\Form;
 use Twig\Environment;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,17 +25,25 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\DDD\Infrastructure\User\Form\RegistrationType;
 use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use App\DDD\Application\UseCase\Query\User\FindByEmail\EmailExistQuery;
+use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
+use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
 /**
  * Class RegistrationAction
  *
+ * @package App\DDD\UserInterface\WEB\Action\User\Registration
+ *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  * @Route({"en": "/registration", "fr": "/inscription"}, name="security_registration", methods={"GET", "POST"})
  */
-class RegistrationAction implements RegistrationActionInterface
+final class RegistrationAction implements RegistrationActionInterface
 {
+	/**
+	 * @var EmailAlreadyExistInterface
+	 */
+	private $emailAlreadyExist;
+
 	/**
 	 * @var Environment $twig
 	 */
@@ -60,12 +67,14 @@ class RegistrationAction implements RegistrationActionInterface
 	/**
 	 * RegistrationAction constructor.
 	 *
-	 * @param Environment           $twig
-	 * @param FormFactoryInterface  $formFactory
-	 * @param MessageBusInterface   $bus
-	 * @param UrlGeneratorInterface $urlGenerator
+	 * @param EmailAlreadyExistInterface $emailAlreadyExist
+	 * @param Environment                $twig
+	 * @param FormFactoryInterface       $formFactory
+	 * @param MessageBusInterface        $bus
+	 * @param UrlGeneratorInterface      $urlGenerator
 	 */
 	public function __construct(
+		EmailAlreadyExistInterface $emailAlreadyExist,
 		Environment $twig,
 		FormFactoryInterface $formFactory,
 		MessageBusInterface $bus,
@@ -75,6 +84,7 @@ class RegistrationAction implements RegistrationActionInterface
 		$this->formFactory = $formFactory;
 		$this->bus = $bus;
 		$this->urlGenerator = $urlGenerator;
+		$this->emailAlreadyExist = $emailAlreadyExist;
 	}
 
 	/**
@@ -90,14 +100,13 @@ class RegistrationAction implements RegistrationActionInterface
 
 		if($form->isSubmitted() && $form->isValid()) {
 
-			$registrationCommand = $form->getData();
+			$registrationCommand = new RegistrationCommand($form->getData());
 
 			try {
-				$this->bus->dispatch(new EmailExistQuery($registrationCommand->getEmail()));
+				$this->emailAlreadyExist->__invoke($registrationCommand->getEmail());
 				$this->bus->dispatch($registrationCommand);
 				return new RedirectResponse($this->urlGenerator->generate('security_login'));
 			} catch (EmailAlreadyExistException $exception) {
-				dump($exception->getMessage());
 				$form->get('email')->addError(new FormError($exception->getMessage()));
 			}
 		}

@@ -12,21 +12,21 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Query\User\FindByEmail\Handler;
+namespace App\DDD\Security\User\ValueObject;
 
 use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
-use App\DDD\Application\UseCase\Query\User\FindByEmail\Interfaces\EmailExistQueryInterface;
-use App\DDD\Application\UseCase\Query\User\FindByEmail\Handler\Interfaces\EmailExistQueryHandlerInterface;
+use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
+
 
 /**
- * Class EmailExistQueryQueryHandler
+ * Class EmailAlreadyExist
  *
- * @package App\DDD\Application\UseCase\Query\User\FindByEmail\Handler
+ * @package App\DDD\Security\User\ValueObject
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class EmailExistQueryQueryHandler implements EmailExistQueryHandlerInterface
+final class EmailAlreadyExist implements EmailAlreadyExistInterface
 {
 	/**
 	 * @var $queryRepository UserQueryRepositoryInterface
@@ -44,10 +44,10 @@ class EmailExistQueryQueryHandler implements EmailExistQueryHandlerInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function __invoke(EmailExistQueryInterface $query)
+	public function __invoke(string $email)
 	{
-		if ($this->queryRepository->existsEmail($query->getEmail())) {
-			throw new EmailAlreadyExistException('This email already registered');
+		if ($this->queryRepository->existsEmail($email)) {
+			throw new EmailAlreadyExistException('registration_email_all_ready_exist');
 		}
 	}
 }

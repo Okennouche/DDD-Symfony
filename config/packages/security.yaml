@@ -18,10 +18,14 @@ security:
             security: false
 
         secutity_firewall:
+
+            pattern: ^/
+
             guard:
                 provider: db_custom_provider
                 authenticators:
                 - App\DDD\Security\User\Authenticator\LoginFormAuthenticator
+
             anonymous: ~
 
             form_login:
@@ -67,6 +71,8 @@ security:
                 samesite:             null # One of null; "lax"; "strict"
                 always_remember_me:   false
                 remember_me_parameter: _remember_me
+
+            user_checker: App\DDD\Security\User\Cheker\UserCheker
 
     access_control:
         # matches /home

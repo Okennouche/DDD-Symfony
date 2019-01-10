@@ -12,32 +12,33 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Query\User\FindByEmail\Handler\Interfaces;
+namespace App\DDD\Security\User\ValueObject\Interfaces;
 
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
-use App\DDD\Application\UseCase\Query\User\FindByEmail\Interfaces\EmailExistQueryInterface;
+
 
 /**
- * Interface EmailExistQueryHandlerInterface
+ * Interface EmailAlreadyExistInterface
  *
- * @package App\DDD\Application\UseCase\Query\User\FindByEmail\Handler\Interfaces
+ * @package App\DDD\Security\User\ValueObject\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface EmailExistQueryHandlerInterface extends MessageHandlerInterface
+interface EmailAlreadyExistInterface
 {
 	/**
-	 * EmailExistQueryHandlerInterface constructor.
+	 * EmailAlreadyExistInterface constructor.
 	 *
 	 * @param UserQueryRepositoryInterface $queryRepository
 	 */
 	public function __construct(UserQueryRepositoryInterface $queryRepository);
 
 	/**
-	 * @param EmailExistQueryInterface $query
+	 * @param string $email
 	 *
 	 * @return mixed
+	 * @throws EmailAlreadyExistException
 	 */
-	public function __invoke(EmailExistQueryInterface $query);
+	public function __invoke(string $email);
 }

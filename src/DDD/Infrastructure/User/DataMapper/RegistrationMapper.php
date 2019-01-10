@@ -26,7 +26,6 @@ use App\DDD\Domain\ValueObject\User\PasswordConfirm;
 use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 use App\DDD\Infrastructure\User\DataMapper\Interfaces\RegistrationMapperInterface;
 
-
 /**
  * Class RegistrationMapper
  *
@@ -110,12 +109,12 @@ final class RegistrationMapper implements RegistrationMapperInterface
 			return $forms['confirm_password']->addError($error);
 		}
 
-		$data = new RegistrationCommand(
-			Uuid::uuid(),
-			$username->toString(),
-			$email->toString(),
-			$password->toString()
-		);
+		$data = [
+			'uuid' => Uuid::uuid(),
+			'username' => $username->toString(),
+			'email' => $email->toString(),
+			'password' => $password->toString()
+		];
 
 		return $forms;
 	}

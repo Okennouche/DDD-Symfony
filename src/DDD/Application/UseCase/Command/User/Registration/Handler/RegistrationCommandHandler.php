@@ -21,13 +21,13 @@ use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\Registratio
 use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationCommandHandlerInterface;
 
 /**
- * Class RegistrationCommandCommandHandler
+ * Class RegistrationCommandHandler
  *
  * @package App\DDD\Application\UseCase\Command\User\Registration\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class RegistrationCommandCommandHandler implements RegistrationCommandHandlerInterface
+final class RegistrationCommandHandler implements RegistrationCommandHandlerInterface
 {
 	/**
 	 * @var $userCommandRepository UserCommandRepositoryInterface

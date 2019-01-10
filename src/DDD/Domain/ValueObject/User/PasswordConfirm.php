@@ -31,6 +31,6 @@ final class PasswordConfirm implements PasswordConfirmInterface
 	 */
 	public static function fromString(string $password, string $confirmePassword): void
 	{
-		Assertion::eq($password, $confirmePassword,'Passwords are different');
+		Assertion::eq($password, $confirmePassword,'registration_email_all_ready_exist');
 	}
 }

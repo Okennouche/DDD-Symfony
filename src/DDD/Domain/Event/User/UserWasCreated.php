@@ -18,9 +18,9 @@ use App\DDD\Domain\Event\User\Interfaces\UserWasCreatedInterface;
 
 
 /**
- * class UserWasCreated
+ * Class UserWasCreated
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Domain\Event\User
  */
 final class UserWasCreated implements UserWasCreatedInterface
 {

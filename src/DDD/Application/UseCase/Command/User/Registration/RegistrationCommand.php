@@ -24,9 +24,8 @@ use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\Registratio
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class RegistrationCommand implements RegistrationCommandInterface
+final class RegistrationCommand implements RegistrationCommandInterface
 {
-
 	/**
 	 * @var string
 	 */
@@ -50,21 +49,15 @@ class RegistrationCommand implements RegistrationCommandInterface
 	/**
 	 * RegistrationCommand constructor.
 	 *
-	 * @param string        $uuid
-	 * @param string        $username
-	 * @param string        $email
-	 * @param string        $password
+	 * @param array $dataForms
 	 */
 	public function __construct(
-		string $uuid,
-		string $username,
-		string $email,
-		string $password
+		array $dataForms
 	) {
-		$this->uuid = $uuid;
-		$this->username = $username;
-		$this->email = $email;
-		$this->password = $password;
+		$this->uuid = $dataForms['uuid'];
+		$this->username = $dataForms['username'];
+		$this->email = $dataForms['email'];
+		$this->password = $dataForms['password'];
 	}
 
 	/**
