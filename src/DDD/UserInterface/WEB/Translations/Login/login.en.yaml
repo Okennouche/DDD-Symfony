@@ -2,4 +2,3 @@ login: Connection
 email: E-mail
 password: Password
 remember_me: Remember me
-login_error_email_username: Identifier / word of pass invalidates

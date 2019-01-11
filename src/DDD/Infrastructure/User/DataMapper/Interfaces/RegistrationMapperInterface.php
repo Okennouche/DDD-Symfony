@@ -25,5 +25,4 @@ use Symfony\Component\Form\DataMapperInterface;
  */
 interface RegistrationMapperInterface extends DataMapperInterface
 {
-
 }

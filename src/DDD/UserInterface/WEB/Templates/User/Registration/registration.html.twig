@@ -4,19 +4,13 @@
 
     <div class="container mt-5">
 
-        {% if error %}
-            <div class="alert alert-danger rounded-0">
-                {{ error.messageKey|trans(error.messageData, 'login') }}
-            </div>
-        {% endif %}
-
         <div class="col-6 mx-auto">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
             <button type="submit" class="btn btn-block btn-primary rounded-0">
                 {% trans from 'registration' %}registration{% endtrans %}
             </button>
-            {{ form_end(form) }}
+            {{ form_end(registrationForm) }}
             <a href="{{ path('security_login') }}" class="btn btn-block btn-success rounded-0 my-2">
                 {% trans from 'login' %}login{% endtrans %}
             </a>

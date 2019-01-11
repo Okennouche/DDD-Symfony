@@ -87,6 +87,7 @@ class User implements UserInterface, \Serializable
 		$this->email = $email;
 		$this->password = $password;
 		$this->roles = ['ROLE_USER'];
+		$this->isActive = false;
 		$this->createdAt = new \DateTimeImmutable();
 	}
 

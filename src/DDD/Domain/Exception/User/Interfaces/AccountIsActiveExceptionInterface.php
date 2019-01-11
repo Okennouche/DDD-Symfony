@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  *
- * @ Created on 10/01/2019 12:24
+ * @ Created on 11/01/2019 10:09
  * @ This file is part of the DDD project.
  * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
@@ -15,10 +15,12 @@ declare(strict_types=1);
 namespace App\DDD\Domain\Exception\User\Interfaces;
 
 /**
- * Class EmailAlreadyExistExceptionInterface
+ * Interface AccountIsActiveExceptionInterface
+ *
+ * @package App\DDD\Domain\Exception\User\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface EmailAlreadyExistExceptionInterface
+interface AccountIsActiveExceptionInterface
 {
 }

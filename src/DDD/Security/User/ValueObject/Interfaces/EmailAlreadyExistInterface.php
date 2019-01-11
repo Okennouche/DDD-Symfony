@@ -17,7 +17,6 @@ namespace App\DDD\Security\User\ValueObject\Interfaces;
 use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 
-
 /**
  * Interface EmailAlreadyExistInterface
  *

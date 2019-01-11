@@ -80,11 +80,11 @@ final class RegistrationAction implements RegistrationActionInterface
 		MessageBusInterface $bus,
 		UrlGeneratorInterface $urlGenerator
 	) {
+		$this->emailAlreadyExist = $emailAlreadyExist;
 		$this->twig = $twig;
 		$this->formFactory = $formFactory;
 		$this->bus = $bus;
 		$this->urlGenerator = $urlGenerator;
-		$this->emailAlreadyExist = $emailAlreadyExist;
 	}
 
 	/**
@@ -94,20 +94,20 @@ final class RegistrationAction implements RegistrationActionInterface
 	 */
 	public function __invoke(Request $request)
 	{
-		$form = $this->formFactory->create(RegistrationType::class, null);
+		$registrationForm = $this->formFactory->create(RegistrationType::class, null);
 
-		$form->handleRequest($request);
+		$registrationForm->handleRequest($request);
 
-		if($form->isSubmitted() && $form->isValid()) {
+		if($registrationForm->isSubmitted() && $registrationForm->isValid()) {
 
-			$registrationCommand = new RegistrationCommand($form->getData());
+			$registrationCommand = new RegistrationCommand($registrationForm->getData());
 
 			try {
 				$this->emailAlreadyExist->__invoke($registrationCommand->getEmail());
 				$this->bus->dispatch($registrationCommand);
 				return new RedirectResponse($this->urlGenerator->generate('security_login'));
 			} catch (EmailAlreadyExistException $exception) {
-				$form->get('email')->addError(new FormError($exception->getMessage()));
+				$registrationForm->get('email')->addError(new FormError($exception->getMessage()));
 			}
 		}
 
@@ -115,8 +115,7 @@ final class RegistrationAction implements RegistrationActionInterface
 			$this->twig->render(
 				"User/Registration/registration.html.twig",
 				[
-					'form' => $form->createView(),
-					'error'=> ''
+					'registrationForm' => $registrationForm->createView()
 				]
 			)
 		);

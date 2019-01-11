@@ -24,6 +24,13 @@ namespace App\DDD\Application\UseCase\Command\User\Registration\Interfaces;
 interface RegistrationCommandInterface
 {
 	/**
+	 * RegistrationCommandInterface constructor.
+	 *
+	 * @param array $dataForms
+	 */
+	public function __construct(array $dataForms);
+
+	/**
 	 * @return string
 	 */
 	public function getUuid(): string;

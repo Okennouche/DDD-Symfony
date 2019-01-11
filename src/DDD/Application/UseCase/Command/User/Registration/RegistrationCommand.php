@@ -47,9 +47,7 @@ final class RegistrationCommand implements RegistrationCommandInterface
 	protected $password;
 
 	/**
-	 * RegistrationCommand constructor.
-	 *
-	 * @param array $dataForms
+	 * @inheritdoc
 	 */
 	public function __construct(
 		array $dataForms

@@ -18,7 +18,6 @@ use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
 
-
 /**
  * Class EmailAlreadyExist
  *
@@ -47,7 +46,7 @@ final class EmailAlreadyExist implements EmailAlreadyExistInterface
 	public function __invoke(string $email)
 	{
 		if ($this->queryRepository->existsEmail($email)) {
-			throw new EmailAlreadyExistException('registration_email_all_ready_exist');
+			throw new EmailAlreadyExistException('This email already registered');
 		}
 	}
 }

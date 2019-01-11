@@ -14,7 +14,10 @@ declare(strict_types=1);
 
 namespace App\DDD\Security\User\Authenticator;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
@@ -90,7 +93,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 		$user = $this->queryRepository->loadUserByUsername($credentials['email']);
 
 		if (!$user) {
-			// fail authentication with a custom error
 			throw new CustomUserMessageAuthenticationException('login_error_email_username');
 		}
 
@@ -111,8 +113,25 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 		return new RedirectResponse($this->router->generate('home', ['_locale' => $request->getLocale()]));
 	}
 
+	public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+	{
+		$data = array(
+			'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+
+			// or to translate this message
+			// $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
+		);
+
+		return new JsonResponse($data, Response::HTTP_FORBIDDEN);
+	}
+
 	protected function getLoginUrl()
 	{
 		return $this->router->generate('security_login');
+	}
+
+	public function supportsRememberMe()
+	{
+		return true;
 	}
 }

@@ -30,7 +30,7 @@ use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class RegistrationType extends AbstractType
+final class RegistrationType extends AbstractType
 {
 	/**
 	 * @param FormBuilderInterface $builder

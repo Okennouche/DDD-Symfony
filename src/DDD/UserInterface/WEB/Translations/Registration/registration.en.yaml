@@ -3,4 +3,3 @@ username: Username
 email: E-mail
 password: Password
 password_confirm: Confirm password
-registration_email_all_ready_exist: This email already registered

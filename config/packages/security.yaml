@@ -65,19 +65,14 @@ security:
                 name:                 ddd_remember_me
                 lifetime:             2592000 # 30 days in seconds
                 path:                 /
-                domain:               null
-                secure:               false # One of true; false; "auto"
-                httponly:             true
-                samesite:             null # One of null; "lax"; "strict"
-                always_remember_me:   false
-                remember_me_parameter: _remember_me
+                domain:               ~
 
-            user_checker: App\DDD\Security\User\Cheker\UserCheker
+            user_checker: App\DDD\Security\User\Checker\UserChecker
 
     access_control:
-        # matches /home
-        - { path: ^/home, roles: ROLE_USER }
+        # matches route home
+        - { path: ^/%locale%/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # matches /login
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%locale%/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # matches /admin/*
         - { path: ^/admin, roles: ROLE_ADMIN }
