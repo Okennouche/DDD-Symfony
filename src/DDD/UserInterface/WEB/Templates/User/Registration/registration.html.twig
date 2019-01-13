@@ -8,11 +8,11 @@
             {{ form_start(registrationForm) }}
             {{ form_widget(registrationForm) }}
             <button type="submit" class="btn btn-block btn-primary rounded-0">
-                {% trans from 'registration' %}registration{% endtrans %}
+                {% trans from 'form_registration' %}registration{% endtrans %}
             </button>
             {{ form_end(registrationForm) }}
             <a href="{{ path('security_login') }}" class="btn btn-block btn-success rounded-0 my-2">
-                {% trans from 'login' %}login{% endtrans %}
+                {% trans from 'form_login' %}login{% endtrans %}
             </a>
         </div>
     </div>

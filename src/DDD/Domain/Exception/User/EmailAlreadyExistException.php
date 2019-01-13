@@ -23,6 +23,6 @@ use App\DDD\Domain\Exception\User\Interfaces\EmailAlreadyExistExceptionInterface
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class EmailAlreadyExistException extends \InvalidArgumentException implements EmailAlreadyExistExceptionInterface
+final class EmailAlreadyExistException extends \InvalidArgumentException implements EmailAlreadyExistExceptionInterface
 {
 }

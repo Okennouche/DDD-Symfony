@@ -1,1 +1,10 @@
-registration_email_all_ready_exist: Cet email déja enregistré
+This email is not valid: This email is not valid.
+The password should not be blank: The password should not be blank.
+The password should contain %number% characters: The password should contain %number% characters.
+The format of the password is invalid: The format of the password is invalid.
+Passwords are different: Passwords are different.
+The username should not be null: The username should not be null.
+The username should not be blank: The username should not be blank.
+The username should contain %number% characters: The username should contain %number% characters.
+The format of the username is invalid: The format of the username is invalid.
+This uuid is not valid: This uuid is not valid.

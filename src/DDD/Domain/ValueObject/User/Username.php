@@ -40,10 +40,10 @@ final class Username implements UsernameInterface
 	 */
 	public static function fromString(?string $username): self
 	{
-		Assertion::notNull($username, 'The username should not be null.');
-		Assertion::notBlank($username, 'The username should not be blank.');
-		Assertion::minLength($username, self::MIN_LENGTH, 'The username should contain ' . self::MIN_LENGTH . ' characters.');
-		Assertion::regex($username, self::FORMAT, 'The format of the username is invalid.');
+		Assertion::notNull($username, 'The username should not be null');
+		Assertion::notBlank($username, 'The username should not be blank');
+		Assertion::minLength($username, self::MIN_LENGTH, 'The username should contain ' . self::MIN_LENGTH . ' characters');
+		Assertion::regex($username, self::FORMAT, 'The format of the username is invalid');
 
 		$usernameVO = new self();
 

@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Login\Interfaces;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
@@ -27,9 +28,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 interface LoginActionInterface
 {
 	/**
+	 * @param Request             $request
 	 * @param AuthenticationUtils $authenticationUtils
 	 *
 	 * @return mixed
 	 */
-	public function __invoke(AuthenticationUtils $authenticationUtils);
+	public function __invoke(Request $request, AuthenticationUtils $authenticationUtils);
 }

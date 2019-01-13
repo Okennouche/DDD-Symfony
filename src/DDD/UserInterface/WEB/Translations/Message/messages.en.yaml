@@ -1,0 +1,2 @@
+message_welcome_user %username%: Welcome %username%
+message_registration_success_user: Congratulations! Your new account has been successfully created ! <br> A confirmation email has been sent to you.

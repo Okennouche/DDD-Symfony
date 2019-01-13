@@ -16,12 +16,12 @@
         {% else %}
             <div class="col-6 mx-auto mt-5">
                 <a href="{{ path('security_login') }}" class="btn btn-block btn-success rounded-0 my-2">
-                    {% trans from 'login' %}login{% endtrans %}
+                    {% trans from 'form_login' %}login{% endtrans %}
                 </a>
             </div>
             <div class="col-6 mx-auto">
                 <a href="{{ path('security_registration') }}" class="btn btn-block btn-primary rounded-0 my-2">
-                    {% trans from 'registration' %}registration{% endtrans %}
+                    {% trans from 'form_registration' %}registration{% endtrans %}
                 </a>
             </div>
         {% endif %}

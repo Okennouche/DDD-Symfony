@@ -18,6 +18,7 @@ use App\DDD\Domain\Entity\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\DDD\Domain\Exception\User\AccountIsActiveException;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class UserChecker
@@ -28,6 +29,21 @@ use Symfony\Component\Security\Core\User\UserCheckerInterface;
  */
 final class UserChecker implements UserCheckerInterface
 {
+	/**
+	 * @var TranslatorInterface
+	 */
+	private $translator;
+
+	/**
+	 * UserChecker constructor.
+	 *
+	 * @param TranslatorInterface $translator
+	 */
+	public function __construct(TranslatorInterface $translator)
+	{
+		$this->translator = $translator;
+	}
+
 	/**
 	 * @inheritdoc
 	 */
@@ -48,7 +64,9 @@ final class UserChecker implements UserCheckerInterface
 		}
 
 		if (!$user->isActive()) {
-			throw new AccountIsActiveException('account_is_not_activated');
+			throw new AccountIsActiveException(
+				$this->translator->trans('account_is_not_activated', [], 'security_login')
+			);
 		}
 	}
 }

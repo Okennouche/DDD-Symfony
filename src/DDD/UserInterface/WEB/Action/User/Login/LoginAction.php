@@ -15,8 +15,12 @@ declare(strict_types=1);
 namespace App\DDD\UserInterface\WEB\Action\User\Login;
 
 use Twig\Environment;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\DDD\UserInterface\WEB\Action\User\Login\Interfaces\LoginActionInterface;
 
@@ -34,31 +38,59 @@ final class LoginAction implements LoginActionInterface
 	private $twig;
 
 	/**
-	 * @var AuthenticationUtils
+	 * @var AuthenticationUtils $authenticationUtils
 	 */
 	private $authenticationUtils;
 
 	/**
+	 * @var Security $security
+	 */
+	private $security;
+
+	/**
+	 * @var UrlGeneratorInterface
+	 */
+	private $urlGenerator;
+
+	/**
 	 * LoginAction constructor.
 	 *
-	 * @param Environment         $twig
-	 * @param AuthenticationUtils $authenticationUtils
+	 * @param Environment           $twig
+	 * @param AuthenticationUtils   $authenticationUtils
+	 * @param Security              $security
+	 * @param UrlGeneratorInterface $urlGenerator
 	 */
 	public function __construct(
 		Environment $twig,
-		AuthenticationUtils $authenticationUtils
+		AuthenticationUtils $authenticationUtils,
+		Security $security,
+		UrlGeneratorInterface $urlGenerator
 	) {
 		$this->twig = $twig;
 		$this->authenticationUtils = $authenticationUtils;
+		$this->security = $security;
+		$this->urlGenerator = $urlGenerator;
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function __invoke(AuthenticationUtils $authenticationUtils)
+	public function __invoke(Request $request, AuthenticationUtils $authenticationUtils)
 	{
+		if($this->security->isGranted('IS_AUTHENTICATED_FULLY')) {
+			return new RedirectResponse(
+				$this->urlGenerator->generate(
+					'home',
+					[
+						'_locale' => $request->getLocale()
+					]
+				)
+			);
+		}
+
 		$error        = $authenticationUtils->getLastAuthenticationError();
 		$lastUsername = $authenticationUtils->getLastUsername();
+
 		return new Response(
 			$this->twig->render(
 				"User/Login/login.html.twig",

@@ -36,7 +36,7 @@ final class Uuid implements UuidInterface
 	 */
 	public static function fromString(string $uuid): Uuid
 	{
-		Assertion::uuid($uuid, 'This uuid is not valid.');
+		Assertion::uuid($uuid, 'This uuid is not valid');
 
 		$uuidVO = new self();
 

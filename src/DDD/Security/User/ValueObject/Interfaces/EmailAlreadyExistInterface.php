@@ -14,8 +14,7 @@ declare(strict_types=1);
 
 namespace App\DDD\Security\User\ValueObject\Interfaces;
 
-use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
-use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Interface EmailAlreadyExistInterface
@@ -29,15 +28,14 @@ interface EmailAlreadyExistInterface
 	/**
 	 * EmailAlreadyExistInterface constructor.
 	 *
-	 * @param UserQueryRepositoryInterface $queryRepository
+	 * @param MessageBusInterface $bus
 	 */
-	public function __construct(UserQueryRepositoryInterface $queryRepository);
+	public function __construct(MessageBusInterface $bus);
 
 	/**
 	 * @param string $email
 	 *
 	 * @return mixed
-	 * @throws EmailAlreadyExistException
 	 */
 	public function __invoke(string $email);
 }

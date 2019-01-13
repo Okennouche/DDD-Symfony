@@ -28,7 +28,7 @@ use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class UserProvider implements UserProviderInterface
+final class UserProvider implements UserProviderInterface
 {
 	/**
 	 * @var UserQueryRepositoryInterface
@@ -50,7 +50,7 @@ class UserProvider implements UserProviderInterface
 	 */
 	public function loadUserByUsername($usernameOrEmail): UserInterface
 	{
-		$user = $this->queryRepository->loadUserByUsername($usernameOrEmail);
+		$user = $this->queryRepository->loadUserByUsernameOrEmail($usernameOrEmail);
 
 		if(!$user) {
 			throw new UsernameNotFoundException(sprintf('Username "%s" does not exist.', $usernameOrEmail));
@@ -68,7 +68,13 @@ class UserProvider implements UserProviderInterface
 			throw new UnsupportedUserException(sprintf('Invalid user class "%s".', get_class($user)));
 		}
 
-		return $this->loadUserByUsername($user->getUsername());
+		$refreshedUser = $this->queryRepository->findByUuid($user->getUuid());
+
+		if (null === $refreshedUser) {
+			throw new UsernameNotFoundException(sprintf('User with uuid %s not found', json_encode($user->getUuid())));
+		}
+
+		return $refreshedUser;
 	}
 
 	/**

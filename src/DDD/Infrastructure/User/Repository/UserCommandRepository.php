@@ -41,9 +41,11 @@ final class UserCommandRepository extends ServiceEntityRepository implements Use
 	/**
 	 * @inheritdoc
 	 */
-	public function store(User $user): void
+	public function store(User $user): string
 	{
 		$this->_em->persist($user);
 		$this->_em->flush();
+
+		return $user->getUuid();
 	}
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 23/12/18 00:17
+ * @ Created on 23/12/18 00:17
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -16,16 +16,19 @@ namespace App\DDD\Domain\Repository\User\Interfaces;
 
 use App\DDD\Domain\Entity\User\User;
 
-
 /**
- * class UserCommandRepositoryInterface
+ * Interface UserCommandRepositoryInterface
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Domain\Repository\User\Interfaces
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 interface UserCommandRepositoryInterface
 {
 	/**
 	 * @param User $user
+	 *
+	 * @return string
 	 */
-	public function store(User $user): void;
+	public function store(User $user): string;
 }

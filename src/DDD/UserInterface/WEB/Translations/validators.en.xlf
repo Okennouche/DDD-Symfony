@@ -5,9 +5,45 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="1TsvHMM" resname="registration_email_all_ready_exist">
-        <source>registration_email_all_ready_exist</source>
-        <target>This email already registered</target>
+      <trans-unit id="1N.qlXR" resname="This email is not valid">
+        <source>This email is not valid</source>
+        <target>This email is not valid.</target>
+      </trans-unit>
+      <trans-unit id="CjudmB1" resname="The password should not be blank">
+        <source>The password should not be blank</source>
+        <target>The password should not be blank.</target>
+      </trans-unit>
+      <trans-unit id="iLyP322" resname="The password should contain %number% characters">
+        <source>The password should contain %number% characters</source>
+        <target>The password should contain %number% characters.</target>
+      </trans-unit>
+      <trans-unit id="Q1GjB7k" resname="The format of the password is invalid">
+        <source>The format of the password is invalid</source>
+        <target>The format of the password is invalid.</target>
+      </trans-unit>
+      <trans-unit id="ufG_uDh" resname="Passwords are different">
+        <source>Passwords are different</source>
+        <target>Passwords are different.</target>
+      </trans-unit>
+      <trans-unit id="MvCsw_R" resname="The username should not be null">
+        <source>The username should not be null</source>
+        <target>The username should not be null.</target>
+      </trans-unit>
+      <trans-unit id="L7SBJfQ" resname="The username should not be blank">
+        <source>The username should not be blank</source>
+        <target>The username should not be blank.</target>
+      </trans-unit>
+      <trans-unit id="seL4hGG" resname="The username should contain %number% characters">
+        <source>The username should contain %number% characters</source>
+        <target>The username should contain %number% characters.</target>
+      </trans-unit>
+      <trans-unit id="3sEQCZr" resname="The format of the username is invalid">
+        <source>The format of the username is invalid</source>
+        <target>The format of the username is invalid.</target>
+      </trans-unit>
+      <trans-unit id="r2N6YWE" resname="This uuid is not valid">
+        <source>This uuid is not valid</source>
+        <target>This uuid is not valid.</target>
       </trans-unit>
     </body>
   </file>

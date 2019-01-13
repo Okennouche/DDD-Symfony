@@ -9,14 +9,6 @@
         <source>welcome</source>
         <target>Welcome to my DDD experiment</target>
       </trans-unit>
-      <trans-unit id="9czPtzd" resname="messages">
-        <source>messages</source>
-        <target>to my DDD experiment</target>
-      </trans-unit>
-      <trans-unit id="_va1Req" resname="welcome %username% messages">
-        <source>welcome %username% messages</source>
-        <target>__welcome %username% messages</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

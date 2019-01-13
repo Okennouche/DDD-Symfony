@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="H2tkOVq" resname="account_is_not_activated">
+        <source>account_is_not_activated</source>
+        <target>Votre compte n'est pas activé</target>
+      </trans-unit>
+      <trans-unit id="PJgNwrR" resname="login_error_email_username">
+        <source>login_error_email_username</source>
+        <target>Identifiant / mot de passe invalide</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -41,9 +41,9 @@ final class Password implements PasswordInterface
 	 */
 	public static function fromString(string $password): Password
 	{
-		Assertion::notBlank($password, 'The password should not be blank.');
-		Assertion::minLength($password, self::MIN_LENGTH, 'The password should contain ' . self::MIN_LENGTH . ' characters.');
-		Assertion::regex($password, self::FORMAT, 'The format of the password is invalid.');
+		Assertion::notBlank($password, 'The password should not be blank');
+		Assertion::minLength($password, self::MIN_LENGTH, 'The password should contain ' . self::MIN_LENGTH . ' characters');
+		Assertion::regex($password, self::FORMAT, 'The format of the password is invalid');
 
 		$passwordVO = new self();
 

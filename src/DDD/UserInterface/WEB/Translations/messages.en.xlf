@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="iFSFyOh" resname="message_welcome_user %username%">
+        <source>message_welcome_user %username%</source>
+        <target>Welcome %username%</target>
+      </trans-unit>
+      <trans-unit id="HVJUDnI" resname="message_registration_success_user">
+        <source>message_registration_success_user</source>
+        <target><![CDATA[Congratulations! Your new account has been successfully created ! <br> A confirmation email has been sent to you.]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

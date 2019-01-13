@@ -14,8 +14,10 @@ declare(strict_types=1);
 
 namespace App\DDD\Security\User\Encoder;
 
+use App\DDD\Domain\Exception\User\PasswordIsValidException;
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class Encoder
@@ -24,7 +26,7 @@ use Symfony\Component\Security\Core\Encoder\Argon2iPasswordEncoder;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class Encoder implements EncoderInterface
+final class Encoder implements EncoderInterface
 {
 	const COST = 24;
 
@@ -32,13 +34,18 @@ class Encoder implements EncoderInterface
 	 * @var Argon2iPasswordEncoder
 	 */
 	private $encoderArgon2;
+	/**
+	 * @var TranslatorInterface
+	 */
+	private $translator;
 
 	/**
 	 * @inheritdoc
 	 */
-	public function __construct()
+	public function __construct(TranslatorInterface $translator)
 	{
 		$this->encoderArgon2 = new Argon2iPasswordEncoder(self::COST);
+		$this->translator = $translator;
 	}
 
 	/**
@@ -65,6 +72,14 @@ class Encoder implements EncoderInterface
 	 */
 	public function isPasswordValid($passwordEncoded, $plainPassword, $salt): bool
 	{
-		return $this->encoderArgon2->isPasswordValid($passwordEncoded, $plainPassword, null);
+		$isValid = $this->encoderArgon2->isPasswordValid($passwordEncoded, $plainPassword, null);
+
+		if(!$isValid) {
+			throw new PasswordIsValidException(
+				$this->translator->trans('login_error_email_username', [], 'security_login')
+			);
+		}
+
+		return $isValid;
 	}
 }

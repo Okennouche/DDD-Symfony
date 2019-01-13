@@ -36,7 +36,7 @@ final class Email implements EmailInterface
 	 */
 	public static function fromString(string $email): Email
 	{
-		Assertion::email($email, 'This email is not valid.');
+		Assertion::email($email, 'This email is not valid');
 
 		$emailVO = new self();
 

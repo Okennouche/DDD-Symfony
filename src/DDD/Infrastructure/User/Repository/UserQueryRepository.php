@@ -41,7 +41,7 @@ final class UserQueryRepository extends ServiceEntityRepository implements UserQ
 	/**
 	 * @inheritdoc
 	 */
-	public function loadUserByUsername(string $usernameOrEmail): ?User
+	public function loadUserByUsernameOrEmail(string $usernameOrEmail): ?User
 	{
 		return $this->createQueryBuilder('u')
 					->where('u.username = :username OR u.email = :email')
@@ -55,12 +55,25 @@ final class UserQueryRepository extends ServiceEntityRepository implements UserQ
 	/**
 	 * @inheritdoc
 	 */
-	public function existsEmail(string $email)
+	public function findByEmail(string $email)
 	{
 		return $this->createQueryBuilder('u')
-					->select('u.uuid')
+					->select('u.email')
 					->where('u.email = :email')
 					->setParameter('email', $email)
+					->getQuery()
+					->getOneOrNullResult()
+			;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function findByUuid(string $uuid): ?User
+	{
+		return $this->createQueryBuilder('u')
+					->where('u.uuid = :uuid')
+					->setParameter('uuid', $uuid)
 					->getQuery()
 					->getOneOrNullResult()
 			;

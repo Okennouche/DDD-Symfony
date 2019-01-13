@@ -93,7 +93,7 @@ final class RegistrationType extends AbstractType
 		$resolver->setDefaults(
 			[
 				'data_class' => RegistrationCommand::class,
-				'translation_domain' => 'registration',
+				'translation_domain' => 'form_registration',
 				'csrf_protection' => true,
 				'empty_data' => null
 			]

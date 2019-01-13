@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 /**
  *
- * @ created on 27/12/18 19:11
+ * @ Created on 27/12/18 19:11
  * @ This file is part of the DDD project.
- * @ Contact (c) Omar Kennouche <o.kennouche@gmail.com>
+ * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
@@ -17,11 +17,13 @@ namespace App\DDD\Domain\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * class User
+ * Class User
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\Domain\Entity\User
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class User implements UserInterface, \Serializable
+final class User implements UserInterface, \Serializable
 {
 	/**
 	 * @var string
@@ -94,7 +96,7 @@ class User implements UserInterface, \Serializable
 	/**
 	 * @return string
 	 */
-	public function getId()
+	public function getUuid()
 	{
 		return $this->uuid;
 	}
@@ -218,13 +220,5 @@ class User implements UserInterface, \Serializable
 			$this->password,
 			$this->isActive,
 			) = unserialize($serialized);
-	}
-
-	/**
-	 * @param $encodePassword
-	 */
-	public function encodedPassword($encodePassword)
-	{
-		$this->password = $encodePassword;
 	}
 }

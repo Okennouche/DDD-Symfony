@@ -7,27 +7,7 @@
     <body>
       <trans-unit id="KcnDDgY" resname="registration">
         <source>registration</source>
-        <target>Registration</target>
-      </trans-unit>
-      <trans-unit id="FveKfWM" resname="username">
-        <source>username</source>
-        <target>Username</target>
-      </trans-unit>
-      <trans-unit id="giREF.l" resname="email">
-        <source>email</source>
-        <target>E-mail</target>
-      </trans-unit>
-      <trans-unit id="XohImNo" resname="password">
-        <source>password</source>
-        <target>Password</target>
-      </trans-unit>
-      <trans-unit id="9PLzdL6" resname="password_confirm">
-        <source>password_confirm</source>
-        <target>Confirm password</target>
-      </trans-unit>
-      <trans-unit id="1TsvHMM" resname="registration_email_all_ready_exist">
-        <source>registration_email_all_ready_exist</source>
-        <target>This email already registered</target>
+        <target>__registration</target>
       </trans-unit>
     </body>
   </file>

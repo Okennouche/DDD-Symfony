@@ -10,6 +10,9 @@ security:
 
         db_custom_provider:
             id: App\DDD\Security\User\Provider\UserProvider
+            #entity:
+            #    class: App\DDD\Domain\Entity\User\User
+            #    property: email
 
     firewalls:
 
@@ -70,9 +73,14 @@ security:
             user_checker: App\DDD\Security\User\Checker\UserChecker
 
     access_control:
-        # matches route home
-        - { path: ^/%locale%/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # matches /login
+        # matches route /home
+        - { path: ^/%locale%/accueil, roles: ROLE_USER }
+        - { path: ^/%locale%/homepage, roles: ROLE_USER }
+        # matches route /login
         - { path: ^/%locale%/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # matches /admin/*
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/%locale%/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # matches route /logout
+        - { path: ^/%locale%/logout, roles: IS_AUTHENTICATED_FULLY }
+        # matches route /registration
+        - { path: ^/%locale%/inscription, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/%locale%/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY }

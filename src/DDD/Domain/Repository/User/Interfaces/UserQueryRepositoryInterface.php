@@ -30,12 +30,19 @@ interface UserQueryRepositoryInterface
 	 *
 	 * @return User|null
 	 */
-	public function loadUserByUsername(string $usernameOrEmail): ?User;
+	public function loadUserByUsernameOrEmail(string $usernameOrEmail): ?User;
 
 	/**
 	 * @param string $email
 	 *
 	 * @return mixed
 	 */
-	public function existsEmail(string $email);
+	public function findByEmail(string $email);
+
+	/**
+	 * @param string $uuid
+	 *
+	 * @return User|null
+	 */
+	public function findByUuid(string  $uuid): ?User;
 }

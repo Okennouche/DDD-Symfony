@@ -8,7 +8,7 @@
 
             {% if error %}
                 <div class="alert alert-danger rounded-0">
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                    {{ error.messageKey|trans(error.messageData, 'security_login') }}
                 </div>
             {% endif %}
 
@@ -16,19 +16,19 @@
                 <div id="login">
                     <div class="form-group">
                         <label for="email">
-                            {% trans from 'login' %}email{% endtrans %}
+                            {% trans from 'form_login' %}email{% endtrans %}
                         </label>
                         <input type="email" id="email" name="_email" class="rounded-0 form-control" value="{{ last_username }}">
                     </div>
                     <div class="form-group">
                         <label for="password" class="required">
-                            {% trans from 'login' %}password{% endtrans %}
+                            {% trans from 'form_login' %}password{% endtrans %}
                         </label>
                         <input type="password" id="password" name="_password" required="required" class="rounded-0 form-control">
                     </div>
                     <div class="form-group">
                         <label for="remember_me">
-                            {% trans from 'login' %}remember_me{% endtrans %}
+                            {% trans from 'form_login' %}remember_me{% endtrans %}
                         </label>
                         <input type="checkbox" id="remember_me" name="_remember_me"/>
                     </div>
@@ -36,7 +36,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-block btn-primary rounded-0">
-                    {% trans from 'login' %}login{% endtrans %}
+                    {% trans from 'form_login' %}login{% endtrans %}
                 </button>
 
             </form>

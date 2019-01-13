@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Security\User\ValueObject;
 
-use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
-use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
+use App\DDD\Application\UseCase\Query\User\FindByEmailQuery;
 use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
 
 /**
@@ -28,16 +28,20 @@ use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
 final class EmailAlreadyExist implements EmailAlreadyExistInterface
 {
 	/**
-	 * @var $queryRepository UserQueryRepositoryInterface
+	 * @var MessageBusInterface $bus
 	 */
-	private $queryRepository;
+	private $bus;
 
 	/**
-	 * @inheritdoc
+	 * EmailAlreadyExistInterface constructor.
+	 *
+	 * @param MessageBusInterface $bus
+	 *
+	 * @internal param UserQueryRepositoryInterface $queryRepository
 	 */
-	public function __construct(UserQueryRepositoryInterface $queryRepository)
+	public function __construct(MessageBusInterface $bus)
 	{
-		$this->queryRepository = $queryRepository;
+		$this->bus = $bus;
 	}
 
 	/**
@@ -45,8 +49,6 @@ final class EmailAlreadyExist implements EmailAlreadyExistInterface
 	 */
 	public function __invoke(string $email)
 	{
-		if ($this->queryRepository->existsEmail($email)) {
-			throw new EmailAlreadyExistException('This email already registered');
-		}
+		$this->bus->dispatch(new FindByEmailQuery($email));
 	}
 }
