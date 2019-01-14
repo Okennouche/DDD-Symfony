@@ -31,5 +31,5 @@ interface UserProjectionInterface extends ProjectionInterface
 	 *
 	 * @return mixed
 	 */
-	public function projectWhenProductWasCreated(UserWasCreated $event);
+	public function projectWhenUserWasCreated(UserWasCreated $event);
 }

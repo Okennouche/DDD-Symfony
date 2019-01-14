@@ -63,6 +63,6 @@ final class RegistrationCommandHandler implements RegistrationCommandHandlerInte
 			$command->getToken()
 		);
 
-		$this->userCommandRepository->store($user);
+		$this->userCommandRepository->add($user);
 	}
 }

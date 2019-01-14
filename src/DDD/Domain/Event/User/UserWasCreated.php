@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Event\User;
 
-use App\DDD\Domain\Event\User\Interfaces\UserWasCreatedInterface;
-use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
+use App\DDD\Domain\Event\User\Interfaces\UserWasCreatedInterface;
 
 /**
  * Class UserWasCreated

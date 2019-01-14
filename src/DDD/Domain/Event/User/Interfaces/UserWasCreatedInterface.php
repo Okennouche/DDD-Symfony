@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Event\User\Interfaces;
 
-use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
 
 /**
  * Interface UserWasCreatedInterface

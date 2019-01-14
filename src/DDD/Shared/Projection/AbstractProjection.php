@@ -14,8 +14,9 @@ declare(strict_types=1);
 
 namespace App\DDD\Shared\Projection;
 
-use App\DDD\Shared\ClassNameHelper\Interfaces\ClassNameHelperInterface;
+use Doctrine\DBAL\Connection;
 use App\DDD\Shared\DomainEvents\DomainEvents;
+use App\DDD\Shared\ClassNameHelper\ClassNameHelper;
 use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
 
 /**
@@ -27,10 +28,26 @@ use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
  */
 abstract class AbstractProjection implements ProjectionInterface
 {
+	/**
+	 * @var Connection
+	 */
+	protected $connection;
+
+	/**
+	 * @param $connection
+	 */
+	public function __construct(Connection $connection)
+	{
+		$this->connection = $connection;
+	}
+
+	/**
+	 * @param DomainEvents $events
+	 */
 	public function project(DomainEvents $events)
 	{
 		foreach ($events as $event) {
-			$method = 'projectWhen'.ClassNameHelperInterface::getShortClassName(get_class($event));
+			$method = 'projectWhen' . ClassNameHelper::getShortClassName(get_class($event));
 			$this->$method($event);
 		}
 	}

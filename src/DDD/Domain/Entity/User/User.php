@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Entity\User;
 
-use App\DDD\Domain\Event\User\UserWasCreated;
-use App\DDD\Shared\Aggregate\AggregateRoot;
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Shared\Aggregate\AggregateRoot;
+use App\DDD\Domain\Event\User\UserWasCreated;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\DDD\Shared\DomainEventsHistory\DomainEventsHistory;
 
@@ -30,47 +30,47 @@ use App\DDD\Shared\DomainEventsHistory\DomainEventsHistory;
 final class User extends AggregateRoot implements UserInterface, \Serializable
 {
 	/**
-	 * @var Uuid
+	 * @var Uuid $uuid
 	 */
 	private $uuid;
 
 	/**
-	 * @var string
+	 * @var string $username
 	 */
 	private $username;
 
 	/**
-	 * @var string
+	 * @var string $email
 	 */
 	private $email;
 
 	/**
-	 * @var string
+	 * @var string $password
 	 */
 	private $password;
 
 	/**
-	 * @var $roles
+	 * @var array $roles
 	 */
 	private $roles = [];
 
 	/**
-	 * @var string
+	 * @var string $confirmationToken
 	 */
 	private $confirmationToken;
 
 	/**
-	 * @var boolean
+	 * @var boolean $isActive
 	 */
 	private $isActive;
 
 	/**
-	 * @var \DateTimeImmutable
+	 * @var \DateTimeImmutable $createdAt
 	 */
 	private $createdAt;
 
 	/**
-	 * @var \DateTime
+	 * @var \DateTime $updatedAt
 	 */
 	private $updatedAt;
 
@@ -239,5 +239,14 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 	public static function reconstituteFromHistory(DomainEventsHistory $eventsHistory)
 	{
 		return;
+	}
+
+	/**
+	 * @param UserWasCreated $event
+	 */
+	protected function applyUserWasCreated(UserWasCreated $event)
+	{
+		$this->username = $event->getUsername();
+		$this->email = $event->getEmail();
 	}
 }

@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\Shared\ClassNameHelper;
 
-use App\DDD\Shared\ClassNameHelper\Interfaces\ClassNameHelperInterface;
-
 /**
  * Class ClassNameHelper
  *
@@ -23,7 +21,7 @@ use App\DDD\Shared\ClassNameHelper\Interfaces\ClassNameHelperInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class ClassNameHelper implements ClassNameHelperInterface
+final class ClassNameHelper
 {
 	/**
 	 * @inheritdoc
