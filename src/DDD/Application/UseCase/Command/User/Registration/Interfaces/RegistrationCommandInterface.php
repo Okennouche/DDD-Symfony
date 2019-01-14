@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Command\User\Registration\Interfaces;
 
+use App\DDD\Shared\Uuid\Uuid;
+
 /**
  * Interface RegistrationCommandInterface
  *
@@ -31,9 +33,9 @@ interface RegistrationCommandInterface
 	public function __construct(array $dataForms);
 
 	/**
-	 * @return string
+	 * @return Uuid
 	 */
-	public function getUuid(): string;
+	public function getUuid(): Uuid;
 
 	/**
 	 * @return string

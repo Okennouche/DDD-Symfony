@@ -14,7 +14,11 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Entity\User;
 
+use App\DDD\Domain\Event\User\UserWasCreated;
+use App\DDD\Shared\Aggregate\AggregateRoot;
+use App\DDD\Shared\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\DDD\Shared\DomainEventsHistory\DomainEventsHistory;
 
 /**
  * Class User
@@ -23,10 +27,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class User implements UserInterface, \Serializable
+final class User extends AggregateRoot implements UserInterface, \Serializable
 {
 	/**
-	 * @var string
+	 * @var Uuid
 	 */
 	private $uuid;
 
@@ -73,14 +77,14 @@ final class User implements UserInterface, \Serializable
 	/**
 	 * User constructor.
 	 *
-	 * @param string $uuid
+	 * @param Uuid $uuid
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
 	 * @param string $token
 	 */
 	public function __construct(
-		string $uuid,
+		Uuid $uuid,
 		string $username,
 		string $email,
 		string $password,
@@ -169,7 +173,7 @@ final class User implements UserInterface, \Serializable
 	}
 
 	/**
-	 * @param string $uuid
+	 * @param Uuid $uuid
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
@@ -178,7 +182,7 @@ final class User implements UserInterface, \Serializable
 	 * @return User
 	 */
 	public static function register(
-		string $uuid,
+		Uuid $uuid,
 		string $username,
 		string $email,
 		string $password,
@@ -186,7 +190,7 @@ final class User implements UserInterface, \Serializable
 	): self	{
 		$user = new self($uuid, $username, $email, $password, $token);
 
-		//$user->apply(new UserWasCreated($id, $username, $email, $password));
+		$user->recordThat(new UserWasCreated($uuid, $username, $email, $password, $token));
 
 		return $user;
 	}
@@ -225,5 +229,15 @@ final class User implements UserInterface, \Serializable
 			$this->password,
 			$this->isActive,
 			) = unserialize($serialized);
+	}
+
+	/**
+	 * @param DomainEventsHistory $eventsHistory
+	 *
+	 * @return mixed
+	 */
+	public static function reconstituteFromHistory(DomainEventsHistory $eventsHistory)
+	{
+		return;
 	}
 }

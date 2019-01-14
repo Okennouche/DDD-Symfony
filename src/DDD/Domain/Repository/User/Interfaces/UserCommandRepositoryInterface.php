@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace App\DDD\Domain\Repository\User\Interfaces;
 
 use App\DDD\Domain\Entity\User\User;
+use App\DDD\Shared\Repository\Interfaces\AggregateRepositoryInterface;
 
 /**
  * Interface UserCommandRepositoryInterface
@@ -23,12 +24,10 @@ use App\DDD\Domain\Entity\User\User;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface UserCommandRepositoryInterface
+interface UserCommandRepositoryInterface extends AggregateRepositoryInterface
 {
 	/**
 	 * @param User $user
-	 *
-	 * @return string
 	 */
-	public function store(User $user): string;
+	public function store(User $user): void;
 }

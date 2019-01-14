@@ -15,6 +15,10 @@ declare(strict_types=1);
 namespace App\DDD\Infrastructure\User\Repository;
 
 use App\DDD\Domain\Entity\User\User;
+use App\DDD\Domain\Projection\Interfaces\UserProjectionInterface;
+use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
+use App\DDD\Shared\EventStore\Interfaces\EventStoreInterface;
+use App\DDD\Shared\RecordsEvents\Interfaces\RecordsEventsInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
@@ -29,23 +33,61 @@ use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 final class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface
 {
 	/**
+	 * @var EventStoreInterface
+	 */
+	private $eventStore;
+	/**
+	 * @var UserProjectionInterface
+	 */
+	private $projection;
+
+	/**
 	 * UserCommandRepository constructor.
 	 *
-	 * @param RegistryInterface $registry
+	 * @param RegistryInterface       $registry
+	 * @param EventStoreInterface     $eventStore
+	 * @param UserProjectionInterface $projection
 	 */
-	public function __construct(RegistryInterface $registry)
-	{
+	public function __construct(
+		RegistryInterface $registry,
+		EventStoreInterface $eventStore,
+		UserProjectionInterface $projection
+	) {
 		parent::__construct($registry, User::class);
+		$this->eventStore = $eventStore;
+		$this->projection = $projection;
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function store(User $user): string
+	public function store(User $user): void
 	{
 		$this->_em->persist($user);
 		$this->_em->flush();
+	}
 
-		return $user->getUuid();
+	/**
+	 * @param RecordsEventsInterface $aggregate
+	 *
+	 * @return mixed
+	 */
+	public function add(RecordsEventsInterface $aggregate)
+	{
+		$recordedEvents = $aggregate->getRecordedEvents();
+		$this->eventStore->append($recordedEvents);
+		$this->projection->project($recordedEvents);
+		$aggregate->clearRecordedEvents();
+	}
+
+	/**
+	 * @param AggregateIdInterface $id
+	 *
+	 * @return RecordsEventsInterface
+	 */
+	public function get(AggregateIdInterface $id): RecordsEventsInterface
+	{
+		$events = $this->eventStore->get($id);
+		return User::reconstituteFromHistory($events);
 	}
 }

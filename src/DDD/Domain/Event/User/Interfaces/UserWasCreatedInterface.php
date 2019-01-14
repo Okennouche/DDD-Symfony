@@ -14,13 +14,51 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Event\User\Interfaces;
 
+use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
+use App\DDD\Shared\Uuid\Uuid;
 
 /**
  * Interface UserWasCreatedInterface
  *
  * @package App\DDD\Domain\Event\User\Interfaces
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface UserWasCreatedInterface
+interface UserWasCreatedInterface extends DomainEventInterface
 {
+	/**
+	 * UserWasCreatedInterface constructor.
+	 *
+	 * @param Uuid $uuid
+	 * @param string $username
+	 * @param string $email
+	 * @param string $password
+	 * @param string $token
+	 */
+	public function __construct(Uuid $uuid, string $username, string $email, string $password, string $token);
 
+	/**
+	 * @return Uuid
+	 */
+	public function getUuid(): Uuid;
+
+	/**
+	 * @return string
+	 */
+	public function getUsername(): string;
+
+	/**
+	 * @return string
+	 */
+	public function getEmail(): string;
+
+	/**
+	 * @return string
+	 */
+	public function getPassword(): string;
+
+	/**
+	 * @return string
+	 */
+	public function getToken():string;
 }

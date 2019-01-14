@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace App\DDD\Application\UseCase\Command\User\Registration;
 
 use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
+use App\DDD\Shared\Uuid\Uuid;
 
 
 /**
@@ -27,7 +28,7 @@ use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\Registratio
 final class RegistrationCommand implements RegistrationCommandInterface
 {
 	/**
-	 * @var string $uuid
+	 * @var Uuid $uuid
 	 */
 	protected $uuid;
 
@@ -67,7 +68,7 @@ final class RegistrationCommand implements RegistrationCommandInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function getUuid(): string
+	public function getUuid(): Uuid
 	{
 		return $this->uuid;
 	}

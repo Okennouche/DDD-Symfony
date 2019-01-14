@@ -14,15 +14,15 @@ declare(strict_types=1);
 
 namespace App\DDD\Infrastructure\User\DataMapper;
 
-use App\DDD\Domain\Service\Token\GeneratorToken;
+use App\DDD\Shared\Uuid\Uuid;
 use Assert\AssertionFailedException;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\Exception;
-use App\DDD\Domain\Service\Uuid\GeneratorUuid;
 use Symfony\Component\Form\FormInterface;
 use App\DDD\Domain\ValueObject\User\Email;
 use App\DDD\Domain\ValueObject\User\Username;
 use App\DDD\Domain\ValueObject\User\Password;
+use App\DDD\Domain\Service\Token\GeneratorToken;
 use App\DDD\Domain\ValueObject\User\PasswordConfirm;
 use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
 use App\DDD\Infrastructure\User\DataMapper\Interfaces\RegistrationMapperInterface;
@@ -111,7 +111,7 @@ final class RegistrationMapper implements RegistrationMapperInterface
 		}
 
 		$data = [
-			'uuid' => GeneratorUuid::uuid(),
+			'uuid' => Uuid::generate(),
 			'username' => $username->toString(),
 			'email' => $email->toString(),
 			'password' => $password->toString(),
