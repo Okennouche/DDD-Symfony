@@ -59,7 +59,8 @@ final class RegistrationCommandHandler implements RegistrationCommandHandlerInte
 			$command->getUuid(),
 			$command->getUsername(),
 			$command->getEmail(),
-			$this->encoder->encodePassword($command->getPassword(), null)
+			$this->encoder->encodePassword($command->getPassword(), null),
+			$command->getToken()
 		);
 
 		$this->userCommandRepository->store($user);

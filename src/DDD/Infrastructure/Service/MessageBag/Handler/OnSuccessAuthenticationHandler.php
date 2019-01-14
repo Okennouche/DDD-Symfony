@@ -12,21 +12,21 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Infrastructure\Service\MessageBag;
+namespace App\DDD\Infrastructure\Service\MessageBag\Handler;
 
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessAuthentication;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnAuthenticationSuccessInterface;
-
+use App\DDD\Infrastructure\Service\MessageBag\Handler\Interfaces\OnSuccessAuthenticationHandlerInterface;
 
 /**
- * Class OnAuthenticationSuccess
+ * Class OnSuccessAuthenticationHandler
  *
- * @package App\DDD\Infrastructure\Service\MessageBag
+ * @package App\DDD\Infrastructure\Service\MessageBag\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class OnAuthenticationSuccess implements OnAuthenticationSuccessInterface
+final class OnSuccessAuthenticationHandler implements OnSuccessAuthenticationHandlerInterface
 {
 
 	const ON_SUCCESS = 'success';
@@ -54,12 +54,12 @@ final class OnAuthenticationSuccess implements OnAuthenticationSuccessInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function __invoke(string $username): void
+	public function __invoke(OnSuccessAuthentication $command): void
 	{
 		$message = $this->translator->trans(
 			'message_welcome_user %username%',
 			[
-				'%username%' => $username
+				'%username%' => $command->getUsername()
 			]
 		);
 

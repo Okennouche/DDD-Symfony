@@ -77,18 +77,21 @@ final class User implements UserInterface, \Serializable
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
+	 * @param string $token
 	 */
 	public function __construct(
 		string $uuid,
 		string $username,
 		string $email,
-		string $password
+		string $password,
+		string $token
 	) {
 		$this->uuid = $uuid;
 		$this->username = $username;
 		$this->email = $email;
 		$this->password = $password;
 		$this->roles = ['ROLE_USER'];
+		$this->confirmationToken = $token;
 		$this->isActive = false;
 		$this->createdAt = new \DateTimeImmutable();
 	}
@@ -170,6 +173,7 @@ final class User implements UserInterface, \Serializable
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
+	 * @param string $token
 	 *
 	 * @return User
 	 */
@@ -177,9 +181,10 @@ final class User implements UserInterface, \Serializable
 		string $uuid,
 		string $username,
 		string $email,
-		string $password
+		string $password,
+		string  $token
 	): self	{
-		$user = new self($uuid, $username, $email, $password);
+		$user = new self($uuid, $username, $email, $password, $token);
 
 		//$user->apply(new UserWasCreated($id, $username, $email, $password));
 

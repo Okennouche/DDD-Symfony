@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\DDD\Domain\Exception\User\EmailIsValidException;
@@ -25,13 +27,12 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessAuthentication;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnAuthenticationSuccessInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class LoginFormAuthenticator
@@ -66,39 +67,38 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 	private $passwordEncoder;
 
 	/**
-	 * @var OnAuthenticationSuccessInterface
-	 */
-	private $onAuthenticationSuccess;
-
-	/**
 	 * @var TranslatorInterface
 	 */
 	private $translator;
+	/**
+	 * @var MessageBusInterface
+	 */
+	private $bus;
 
 	/**
 	 * LoginFormAuthenticator constructor.
 	 *
-	 * @param UserQueryRepositoryInterface     $queryRepository
-	 * @param RouterInterface                  $router
-	 * @param CsrfTokenManagerInterface        $csrfTokenManager
-	 * @param EncoderInterface                 $passwordEncoder
-	 * @param OnAuthenticationSuccessInterface $onAuthenticationSuccess
-	 * @param TranslatorInterface              $translator
+	 * @param UserQueryRepositoryInterface $queryRepository
+	 * @param RouterInterface              $router
+	 * @param CsrfTokenManagerInterface    $csrfTokenManager
+	 * @param EncoderInterface             $passwordEncoder
+	 * @param TranslatorInterface          $translator
+	 * @param MessageBusInterface          $bus
 	 */
 	public function __construct(
 		UserQueryRepositoryInterface $queryRepository,
 		RouterInterface $router,
 		CsrfTokenManagerInterface $csrfTokenManager,
 		EncoderInterface $passwordEncoder,
-		OnAuthenticationSuccessInterface $onAuthenticationSuccess,
-		TranslatorInterface $translator
+		TranslatorInterface $translator,
+		MessageBusInterface $bus
 	) {
 		$this->queryRepository = $queryRepository;
 		$this->router = $router;
 		$this->csrfTokenManager = $csrfTokenManager;
 		$this->passwordEncoder = $passwordEncoder;
-		$this->onAuthenticationSuccess = $onAuthenticationSuccess;
 		$this->translator = $translator;
+		$this->bus = $bus;
 	}
 
 	/**
@@ -168,7 +168,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 			return new RedirectResponse($targetPath);
 		}
 
-		$this->onAuthenticationSuccess->__invoke($token->getUsername());
+		$this->bus->dispatch(new OnSuccessAuthentication($token->getUsername()));
 
 		return new RedirectResponse(
 			$this->router->generate(

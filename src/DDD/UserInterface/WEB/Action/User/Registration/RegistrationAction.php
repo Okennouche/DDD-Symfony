@@ -26,9 +26,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\DDD\Infrastructure\User\Form\RegistrationType;
 use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
 use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
-use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnRegistrationSuccessInterface;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
 /**
@@ -62,28 +62,24 @@ final class RegistrationAction implements RegistrationActionInterface
 	private $bus;
 
 	/**
-	 * @var UrlGeneratorInterface
+	 * @var UrlGeneratorInterface $urlGenerator
 	 */
 	private $urlGenerator;
+
 	/**
-	 * @var OnRegistrationSuccessInterface
-	 */
-	private $onRegistrationSuccess;
-	/**
-	 * @var Security
+	 * @var Security $security
 	 */
 	private $security;
 
 	/**
 	 * RegistrationAction constructor.
 	 *
-	 * @param EmailAlreadyExistInterface     $emailAlreadyExist
-	 * @param Environment                    $twig
-	 * @param FormFactoryInterface           $formFactory
-	 * @param MessageBusInterface            $bus
-	 * @param UrlGeneratorInterface          $urlGenerator
-	 * @param OnRegistrationSuccessInterface $onRegistrationSuccess
-	 * @param Security                       $security
+	 * @param EmailAlreadyExistInterface $emailAlreadyExist
+	 * @param Environment                $twig
+	 * @param FormFactoryInterface       $formFactory
+	 * @param MessageBusInterface        $bus
+	 * @param UrlGeneratorInterface      $urlGenerator
+	 * @param Security                   $security
 	 */
 	public function __construct(
 		EmailAlreadyExistInterface $emailAlreadyExist,
@@ -91,7 +87,6 @@ final class RegistrationAction implements RegistrationActionInterface
 		FormFactoryInterface $formFactory,
 		MessageBusInterface $bus,
 		UrlGeneratorInterface $urlGenerator,
-		OnRegistrationSuccessInterface $onRegistrationSuccess,
 		Security $security
 	) {
 		$this->emailAlreadyExist = $emailAlreadyExist;
@@ -99,7 +94,6 @@ final class RegistrationAction implements RegistrationActionInterface
 		$this->formFactory = $formFactory;
 		$this->bus = $bus;
 		$this->urlGenerator = $urlGenerator;
-		$this->onRegistrationSuccess = $onRegistrationSuccess;
 		$this->security = $security;
 	}
 
@@ -132,7 +126,7 @@ final class RegistrationAction implements RegistrationActionInterface
 			try {
 				$this->emailAlreadyExist->__invoke($registrationCommand->getEmail());
 				$this->bus->dispatch($registrationCommand);
-				$this->onRegistrationSuccess->__invoke();
+				$this->bus->dispatch(new OnSuccessRegistration());
 				return new RedirectResponse(
 					$this->urlGenerator->generate(
 						'security_login',

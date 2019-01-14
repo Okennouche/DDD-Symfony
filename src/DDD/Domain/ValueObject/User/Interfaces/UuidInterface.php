@@ -17,7 +17,7 @@ namespace App\DDD\Domain\ValueObject\User\Interfaces;
 use App\DDD\Domain\ValueObject\User\Uuid;
 
 /**
- * Interface UuidInterface
+ * Interface GeneratorUuidInterface
  *
  * @package App\DDD\Domain\ValueObject\User\Interfaces
  *

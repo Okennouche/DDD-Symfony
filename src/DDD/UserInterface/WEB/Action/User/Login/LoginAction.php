@@ -48,7 +48,7 @@ final class LoginAction implements LoginActionInterface
 	private $security;
 
 	/**
-	 * @var UrlGeneratorInterface
+	 * @var UrlGeneratorInterface $urlGenerator
 	 */
 	private $urlGenerator;
 

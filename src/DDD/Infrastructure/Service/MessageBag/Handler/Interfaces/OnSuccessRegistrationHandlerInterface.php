@@ -12,23 +12,24 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Infrastructure\Service\MessageBag\Interfaces;
+namespace App\DDD\Infrastructure\Service\MessageBag\Handler\Interfaces;
 
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
-
 /**
- * Interface OnAuthenticationSuccessInterface
+ * Interface OnSuccessRegistrationHandlerInterface
  *
- * @package App\DDD\Infrastructure\Service\MessageBag\Interfaces
+ * @package App\DDD\Infrastructure\Service\MessageBag\Handler\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface OnAuthenticationSuccessInterface
+interface OnSuccessRegistrationHandlerInterface extends MessageHandlerInterface
 {
 	/**
-	 * OnAuthenticationSuccessInterface constructor.
+	 * OnSuccessRegistrationHandlerInterface constructor.
 	 *
 	 * @param FlashBagInterface   $flashBag
 	 * @param TranslatorInterface $translator
@@ -36,7 +37,7 @@ interface OnAuthenticationSuccessInterface
 	public function __construct(FlashBagInterface $flashBag, TranslatorInterface $translator);
 
 	/**
-	 * @param string $username
+	 * @param OnSuccessRegistration $command
 	 */
-	public function __invoke(string $username): void;
+	public function __invoke(OnSuccessRegistration $command): void;
 }

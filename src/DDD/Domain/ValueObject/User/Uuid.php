@@ -18,7 +18,7 @@ use Assert\Assertion;
 use App\DDD\Domain\ValueObject\User\Interfaces\UuidInterface;
 
 /**
- * Class Uuid
+ * Class GeneratorUuid
  *
  * @package App\DDD\Domain\ValueObject\User
  *

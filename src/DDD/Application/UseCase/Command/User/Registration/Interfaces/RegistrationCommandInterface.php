@@ -49,4 +49,9 @@ interface RegistrationCommandInterface
 	 * @return string
 	 */
 	public function getPassword(): string;
+
+	/**
+	 * @return string
+	 */
+	public function getToken():string;
 }

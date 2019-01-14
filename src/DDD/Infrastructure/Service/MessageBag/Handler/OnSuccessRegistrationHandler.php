@@ -12,21 +12,21 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Infrastructure\Service\MessageBag;
+namespace App\DDD\Infrastructure\Service\MessageBag\Handler;
 
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnRegistrationSuccessInterface;
-
+use App\DDD\Infrastructure\Service\MessageBag\Handler\Interfaces\OnSuccessRegistrationHandlerInterface;
 
 /**
- * Class OnRegistrationSuccess
+ * Class OnSuccessRegistrationHandler
  *
- * @package App\DDD\Infrastructure\Service\MessageBag
+ * @package App\DDD\Infrastructure\Service\MessageBag\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class OnRegistrationSuccess implements OnRegistrationSuccessInterface
+final class OnSuccessRegistrationHandler implements OnSuccessRegistrationHandlerInterface
 {
 
 	const ON_SUCCESS = 'success';
@@ -54,7 +54,7 @@ final class OnRegistrationSuccess implements OnRegistrationSuccessInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function __invoke(): void
+	public function __invoke(OnSuccessRegistration $command): void
 	{
 		$message = $this->translator->trans('message_registration_success_user');
 
