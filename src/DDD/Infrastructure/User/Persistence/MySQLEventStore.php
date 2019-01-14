@@ -72,6 +72,7 @@ class MySQLEventStore implements MySQLEventStoreInterface
 		/** @var DomainEventInterface $event */
 		foreach ($events as $event) {
 
+			var_dump($event);exit();
 			$newEvent = new Events(
 				Uuid::generate(),
 				$event->getAggregateId(),

@@ -35,16 +35,6 @@ class UserProjection extends AbstractProjection implements UserProjectionInterfa
 	 */
 	public function projectWhenUserWasCreated(UserWasCreated $event)
 	{
-		$stmt = $this->connection->prepare(
-			'INSERT INTO `ddd_users` (`uuid`, `name`, `price`, `description`) 
-             VALUES (:id, :name, :price, :description)'
-		);
 
-		$stmt->execute([
-			':id' => (string) $event->getAggregateId(),
-			':name' => $event->getName(),
-			':price' => $event->getPrice(),
-			':description' => $event->getDescription(),
-		]);
 	}
 }

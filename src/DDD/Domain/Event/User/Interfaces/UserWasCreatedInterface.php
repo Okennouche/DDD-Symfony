@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Event\User\Interfaces;
 
+use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\Uuid\Uuid;
 use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
 
@@ -38,9 +39,9 @@ interface UserWasCreatedInterface extends DomainEventInterface
 	public function __construct(Uuid $uuid, string $username, string $email, string $password, string $token);
 
 	/**
-	 * @return Uuid
+	 * @return AggregateIdInterface
 	 */
-	public function getUuid(): Uuid;
+	public function getAggregateId(): AggregateIdInterface;
 
 	/**
 	 * @return string

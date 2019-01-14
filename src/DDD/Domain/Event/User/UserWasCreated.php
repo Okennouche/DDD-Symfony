@@ -80,14 +80,6 @@ final class UserWasCreated implements UserWasCreatedInterface
 	/**
 	 * @inheritdoc
 	 */
-	public function getUuid(): Uuid
-	{
-		return $this->uuid;
-	}
-
-	/**
-	 * @inheritdoc
-	 */
 	public function getUsername(): string
 	{
 		return $this->username;
