@@ -29,5 +29,5 @@ interface UserCommandRepositoryInterface extends AggregateRepositoryInterface
 	/**
 	 * @param User $user
 	 */
-	public function store(User $user): void;
+	public function dataStore(User $user): void;
 }

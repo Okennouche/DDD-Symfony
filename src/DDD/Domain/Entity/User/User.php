@@ -240,13 +240,4 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 	{
 		return;
 	}
-
-	/**
-	 * @param UserWasCreated $event
-	 */
-	protected function applyUserWasCreated(UserWasCreated $event)
-	{
-		$this->username = $event->getUsername();
-		$this->email = $event->getEmail();
-	}
 }

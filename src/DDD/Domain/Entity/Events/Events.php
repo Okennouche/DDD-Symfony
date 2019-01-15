@@ -17,7 +17,6 @@ namespace App\DDD\Domain\Entity\Events;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\Uuid\Uuid;
 
-
 /**
  * Class Events
  *
@@ -74,42 +73,16 @@ final class Events
 	}
 
 	/**
-	 * @return Uuid
+	 * @return array
 	 */
-	public function getUuid(): Uuid
+	public function arrayFromData(): array
 	{
-		return $this->uuid;
-	}
-
-	/**
-	 * @return AggregateIdInterface
-	 */
-	public function getAggregateId(): AggregateIdInterface
-	{
-		return $this->aggregateId;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getEventName(): string
-	{
-		return $this->eventName;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getPayload(): string
-	{
-		return $this->payload;
-	}
-
-	/**
-	 * @return \DateTimeImmutable
-	 */
-	public function getCreatedAt(): \DateTimeImmutable
-	{
-		return $this->createdAt;
+		return [
+			':uuid' => $this->uuid->__toString(),
+			':aggregateId' => $this->aggregateId->__toString(),
+			':eventName' => $this->eventName,
+			':payload' => $this->payload,
+			':createdAt' => $this->createdAt->format('Y-m-d H:i:s'),
+		];
 	}
 }

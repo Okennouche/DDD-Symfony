@@ -12,7 +12,7 @@
 
         <field name="eventName" column="event_name" type="string" length="255" nullable="false"/>
 
-        <field name="payload" type="string" unique="false" nullable="false"/>
+        <field name="payload" type="text" unique="false" nullable="false"/>
 
         <field name="createdAt" column="created_at" type="datetime_immutable" nullable="false"/>
 

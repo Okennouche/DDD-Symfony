@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  *
- * @ Created on 14/01/2019 17:00
+ * @ Created on 15/01/2019 14:27
  * @ This file is part of the DDD project.
  * @ Contact (c) Omar Kennouche <dev.kennouche@gmail.com>
  * @ Licence For the full copyright and license information, please view the LICENSE
@@ -12,23 +12,17 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Shared\Projection\Interfaces;
+namespace App\DDD\Shared\Serializer\Interfaces;
 
-use App\DDD\Shared\DomainEvents\DomainEvents;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * Interface ProjectionInterface
+ * Interface PayloadSerializerInterface
  *
- * @package App\DDD\Shared\Projection\Interfaces
+ * @package App\DDD\Shared\AbstractSerializer\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-interface ProjectionInterface
+interface PayloadSerializerInterface extends SerializerInterface
 {
-	/**
-	 * @param DomainEvents $events
-	 *
-	 * @return mixed
-	 */
-	public function project(DomainEvents $events);
 }

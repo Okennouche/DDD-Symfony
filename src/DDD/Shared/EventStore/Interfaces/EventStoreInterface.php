@@ -32,12 +32,12 @@ interface EventStoreInterface
 	 *
 	 * @return mixed
 	 */
-	public function append(DomainEvents $events);
+	public function appendEvents(DomainEvents $events);
 
 	/**
 	 * @param AggregateIdInterface $aggregateId
 	 *
 	 * @return DomainEventsHistory
 	 */
-	public function get(AggregateIdInterface $aggregateId): DomainEventsHistory;
+	public function getEvents(AggregateIdInterface $aggregateId): DomainEventsHistory;
 }

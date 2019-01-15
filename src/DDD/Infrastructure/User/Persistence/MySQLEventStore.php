@@ -14,15 +14,15 @@ declare(strict_types=1);
 
 namespace App\DDD\Infrastructure\User\Persistence;
 
-use App\DDD\Domain\Entity\Events\Events;
-use App\DDD\Shared\ClassNameHelper\ClassNameHelper;
 use App\DDD\Shared\Uuid\Uuid;
 use Doctrine\DBAL\Connection;
+use App\DDD\Domain\Entity\Events\Events;
 use App\DDD\Shared\DomainEvents\DomainEvents;
-use Symfony\Component\Serializer\SerializerInterface;
+use App\DDD\Shared\ClassNameHelper\ClassNameHelper;
 use App\DDD\Shared\DomainEventsHistory\DomainEventsHistory;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
+use App\DDD\Shared\Serializer\Interfaces\PayloadSerializerInterface;
 use App\DDD\Infrastructure\User\Persistence\Interfaces\MySQLEventStoreInterface;
 
 
@@ -33,9 +33,8 @@ use App\DDD\Infrastructure\User\Persistence\Interfaces\MySQLEventStoreInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class MySQLEventStore implements MySQLEventStoreInterface
+final class MySQLEventStore implements MySQLEventStoreInterface
 {
-
 	const TABLE_NAME = 'ddd_events';
 
 	/**
@@ -44,26 +43,28 @@ class MySQLEventStore implements MySQLEventStoreInterface
 	protected $connection;
 
 	/**
-	 * @var SerializerInterface $serializer
+	 * @var PayloadSerializerInterface $serializerPayload
 	 */
-	protected $serializer;
+	private $serializerPayload;
 
 	/**
 	 * MySQLEventStore constructor.
 	 *
-	 * @param Connection          $connection
-	 * @param SerializerInterface $serializer
+	 * @param Connection                 $connection
+	 * @param PayloadSerializerInterface $payloadSerializer
 	 */
-	public function __construct(Connection $connection, SerializerInterface $serializer)
-	{
+	public function __construct(
+		Connection $connection,
+		PayloadSerializerInterface $payloadSerializer
+	) {
 		$this->connection = $connection;
-		$this->serializer = $serializer;
+		$this->serializerPayload = $payloadSerializer;
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function append(DomainEvents $events)
+	public function appendEvents(DomainEvents $events)
 	{
 		$request = $this->connection->prepare(
 			sprintf('INSERT INTO %s (`uuid`, `aggregate_id`, `event_name`, `payload`, `created_at`) VALUES (:uuid, :aggregateId, :eventName, :payload, :createdAt)', static::TABLE_NAME)
@@ -72,30 +73,21 @@ class MySQLEventStore implements MySQLEventStoreInterface
 		/** @var DomainEventInterface $event */
 		foreach ($events as $event) {
 
-			var_dump($event);exit();
 			$newEvent = new Events(
 				Uuid::generate(),
 				$event->getAggregateId(),
 				ClassNameHelper::getShortClassName(get_class($event)),
-				$this->serializer->serialize($event, 'json')
+				$this->serializerPayload->serialize($event, 'json')
 			);
 
-			$request->execute([
-				':uuid' => $newEvent->getUuid()->__toString(),
-				':aggregateId' => $newEvent->getAggregateId()->__toString(),
-				':eventName' => $newEvent->getEventName(),
-				':payload' => $newEvent->getPayload(),
-				':createdAt' => $newEvent->getCreatedAt()->format('Y-m-d H:i:s'),
-			]);
+			$request->execute($newEvent->arrayFromData());
 		}
 	}
 
 	/**
-	 * @param AggregateIdInterface $aggregateId
-	 *
-	 * @return DomainEventsHistory
+	 * @inheritdoc
 	 */
-	public function get(AggregateIdInterface $aggregateId): DomainEventsHistory
+	public function getEvents(AggregateIdInterface $aggregateId): DomainEventsHistory
 	{
 
 		$query = $this->connection->prepare(sprintf('SELECT * FROM %s WHERE aggregate_id=:aggregateId', static::TABLE_NAME));
@@ -104,7 +96,7 @@ class MySQLEventStore implements MySQLEventStoreInterface
 		$events = [];
 
 		while ($row = $query->fetch(\PDO::FETCH_ASSOC)) {
-			$events[] = $this->serializer->deserialize($row['payload'], $row['event_name'], 'json');
+			$events[] = $this->serializerPayload->deserialize($row['payload'], $row['event_name'], 'json');
 		}
 
 		$query->closeCursor();

@@ -29,5 +29,5 @@ services:
 
     # UI - CLI
     App\DDD\UserInterface\CLI\Command\:
-            resource: '../src/DDD/UserInterface/CLI/Command'
-            tags: ['controller.service_arguments']
+        resource: '../src/DDD/UserInterface/CLI/Command'
+        tags: ['controller.service_arguments']

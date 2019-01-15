@@ -32,12 +32,12 @@ interface AggregateRepositoryInterface
 	 *
 	 * @return mixed
 	 */
-	public function add(RecordsEventsInterface $aggregate);
+	public function addEvents(RecordsEventsInterface $aggregate);
 
 	/**
-	 * @param AggregateIdInterface $id
+	 * @param AggregateIdInterface $aggregateId
 	 *
 	 * @return RecordsEventsInterface
 	 */
-	public function get(AggregateIdInterface $id): RecordsEventsInterface;
+	public function getEvents(AggregateIdInterface $aggregateId): RecordsEventsInterface;
 }

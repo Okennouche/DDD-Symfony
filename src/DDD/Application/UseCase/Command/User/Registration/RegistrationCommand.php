@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Command\User\Registration;
 
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
 
 
 /**

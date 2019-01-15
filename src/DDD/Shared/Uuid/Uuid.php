@@ -24,7 +24,7 @@ use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class Uuid implements AggregateIdInterface
+final class Uuid implements AggregateIdInterface
 {
 	/**
 	 * @var string $uuid
