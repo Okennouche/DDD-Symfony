@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace App\DDD\Shared\Aggregate;
 
+use App\DDD\Shared\ClassNameHelper\ClassNameHelper;
 use App\DDD\Shared\DomainEvents\DomainEvents;
 use App\DDD\Shared\DomainEventsHistory\DomainEventsHistory;
 use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
 use App\DDD\Shared\RecordsEvents\Interfaces\RecordsEventsInterface;
-use App\DDD\Shared\ClassNameHelper\Interfaces\ClassNameHelperInterface;
 
 
 /**
@@ -64,7 +64,7 @@ abstract class AggregateRoot implements RecordsEventsInterface
 	 */
 	protected function apply(DomainEventInterface $event)
 	{
-		$method = 'apply' . ClassNameHelperInterface::getShortClassName(get_class($event));
+		$method = 'apply' . ClassNameHelper::getShortClassName(get_class($event));
 		$this->$method($event);
 	}
 

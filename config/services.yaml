@@ -21,7 +21,6 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-
     # UI - WEB
     App\DDD\UserInterface\WEB\Action\:
         resource: '../src/DDD/UserInterface/WEB/Action'

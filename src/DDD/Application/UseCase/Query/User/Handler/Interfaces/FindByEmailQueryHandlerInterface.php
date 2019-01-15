@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace App\DDD\Application\UseCase\Query\User\Handler\Interfaces;
 
-use App\DDD\Application\UseCase\Query\User\Interfaces\FindByEmailQueryInterface;
-use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
-use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use App\DDD\Domain\Repository\User\Interfaces\UserQueryRepositoryInterface;
+use App\DDD\Application\UseCase\Query\User\Interfaces\FindByEmailQueryInterface;
 
 
 /**
