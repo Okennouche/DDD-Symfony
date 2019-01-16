@@ -17,7 +17,6 @@ namespace App\DDD\Application\UseCase\Command\User;
 use App\DDD\Shared\Uuid\Uuid;
 use App\DDD\Application\UseCase\Command\User\Interfaces\RegistrationCommandInterface;
 
-
 /**
  * Class RegistrationCommand
  *
@@ -48,11 +47,6 @@ final class RegistrationCommand implements RegistrationCommandInterface
 	protected $password;
 
 	/**
-	 * @var string $token
-	 */
-	protected $token;
-
-	/**
 	 * @inheritdoc
 	 */
 	public function __construct(
@@ -62,7 +56,6 @@ final class RegistrationCommand implements RegistrationCommandInterface
 		$this->username = $dataForms['username'];
 		$this->email = $dataForms['email'];
 		$this->password = $dataForms['password'];
-		$this->token = $dataForms['token'];
 	}
 
 	/**
@@ -95,13 +88,5 @@ final class RegistrationCommand implements RegistrationCommandInterface
 	public function getPassword(): string
 	{
 		return $this->password;
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function getToken(): string
-	{
-		return $this->token;
 	}
 }

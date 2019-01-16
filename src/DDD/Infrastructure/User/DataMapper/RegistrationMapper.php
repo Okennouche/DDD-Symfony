@@ -22,7 +22,6 @@ use Symfony\Component\Form\FormInterface;
 use App\DDD\Domain\ValueObject\User\Email;
 use App\DDD\Domain\ValueObject\User\Username;
 use App\DDD\Domain\ValueObject\User\Password;
-use App\DDD\Domain\Service\Token\GeneratorToken;
 use App\DDD\Domain\ValueObject\User\PasswordConfirm;
 use App\DDD\Application\UseCase\Command\User\RegistrationCommand;
 use App\DDD\Infrastructure\User\DataMapper\Interfaces\RegistrationMapperInterface;
@@ -114,8 +113,7 @@ final class RegistrationMapper implements RegistrationMapperInterface
 			'uuid' => Uuid::generate(),
 			'username' => $username->toString(),
 			'email' => $email->toString(),
-			'password' => $password->toString(),
-			'token' => GeneratorToken::token()
+			'password' => $password->toString()
 		];
 
 		return $forms;

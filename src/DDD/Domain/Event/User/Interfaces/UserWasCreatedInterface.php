@@ -55,11 +55,6 @@ interface UserWasCreatedInterface extends DomainEventInterface
 	public function getPassword(): string;
 
 	/**
-	 * @return string
-	 */
-	public function getToken():string;
-
-	/**
 	 * @return array
 	 */
 	public function getRoles(): array;

@@ -77,25 +77,22 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 	/**
 	 * User constructor.
 	 *
-	 * @param Uuid $uuid
+	 * @param Uuid   $uuid
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
-	 * @param string $token
 	 */
 	public function __construct(
 		Uuid $uuid,
 		string $username,
 		string $email,
-		string $password,
-		string $token
+		string $password
 	) {
 		$this->uuid = $uuid;
 		$this->username = $username;
 		$this->email = $email;
 		$this->password = $password;
 		$this->roles = ['ROLE_USER'];
-		$this->confirmationToken = $token;
 		$this->isActive = false;
 		$this->createdAt = new \DateTimeImmutable();
 	}
@@ -173,11 +170,10 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 	}
 
 	/**
-	 * @param Uuid $uuid
+	 * @param Uuid   $uuid
 	 * @param string $username
 	 * @param string $email
 	 * @param string $password
-	 * @param string $token
 	 *
 	 * @return User
 	 */
@@ -185,10 +181,9 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 		Uuid $uuid,
 		string $username,
 		string $email,
-		string $password,
-		string  $token
+		string $password
 	): self	{
-		$user = new self($uuid, $username, $email, $password, $token);
+		$user = new self($uuid, $username, $email, $password);
 
 		$user->recordThat(new UserWasCreated($user));
 

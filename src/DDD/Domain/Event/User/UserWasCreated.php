@@ -49,11 +49,6 @@ final class UserWasCreated implements UserWasCreatedInterface
 	protected $password;
 
 	/**
-	 * @var string $token
-	 */
-	protected $token;
-
-	/**
 	 * @var array $roles
 	 */
 	protected $roles;
@@ -76,7 +71,6 @@ final class UserWasCreated implements UserWasCreatedInterface
 		$this->username = $user->getUsername();
 		$this->email = $user->getEmail();
 		$this->password = $user->getPassword();
-		$this->token = $user->getConfirmationToken();
 		$this->roles = $user->getRoles();
 		$this->isActive = $user->isActive();
 		$this->createdAt = $user->getCreatedAt();
@@ -112,14 +106,6 @@ final class UserWasCreated implements UserWasCreatedInterface
 	public function getPassword(): string
 	{
 		return $this->password;
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function getToken(): string
-	{
-		return $this->token;
 	}
 
 	/**
