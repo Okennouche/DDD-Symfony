@@ -12,16 +12,16 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration;
+namespace App\DDD\Application\UseCase\Command\User;
 
 use App\DDD\Shared\Uuid\Uuid;
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
+use App\DDD\Application\UseCase\Command\User\Interfaces\RegistrationCommandInterface;
 
 
 /**
  * Class RegistrationCommand
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration
+ * @package App\DDD\Application\UseCase\Command\User
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

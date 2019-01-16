@@ -12,18 +12,18 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration\Handler;
+namespace App\DDD\Application\UseCase\Command\User\Handler;
 
 use App\DDD\Domain\Entity\User\User;
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\RegistrationCommandHandlerInterface;
+use App\DDD\Application\UseCase\Command\User\Interfaces\RegistrationCommandInterface;
+use App\DDD\Application\UseCase\Command\User\Handler\Interfaces\RegistrationCommandHandlerInterface;
 
 /**
  * Class RegistrationCommandHandler
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration\Handler
+ * @package App\DDD\Application\UseCase\Command\User\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
@@ -63,6 +63,6 @@ final class RegistrationCommandHandler implements RegistrationCommandHandlerInte
 			$command->getToken()
 		);
 
-		$this->userCommandRepository->dataStore($user);
+		$this->userCommandRepository->addEvents($user);
 	}
 }

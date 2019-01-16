@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Entity\Events;
 
-use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 
 /**
  * Class Events
@@ -78,8 +78,8 @@ final class Events
 	public function arrayFromData(): array
 	{
 		return [
-			':uuid' => $this->uuid->__toString(),
-			':aggregateId' => $this->aggregateId->__toString(),
+			':uuid' => (string) $this->uuid,
+			':aggregateId' => (string) $this->aggregateId,
 			':eventName' => $this->eventName,
 			':payload' => $this->payload,
 			':createdAt' => $this->createdAt->format('Y-m-d H:i:s'),

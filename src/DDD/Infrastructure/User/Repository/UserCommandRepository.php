@@ -16,6 +16,7 @@ namespace App\DDD\Infrastructure\User\Repository;
 
 use App\DDD\Domain\Entity\User\User;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\EventStore\Interfaces\EventStoreInterface;
 use App\DDD\Shared\RecordsEvents\Interfaces\RecordsEventsInterface;
@@ -37,17 +38,25 @@ final class UserCommandRepository extends ServiceEntityRepository implements Use
 	private $eventStore;
 
 	/**
+	 * @var ProjectionInterface
+	 */
+	private $projection;
+
+	/**
 	 * UserCommandRepository constructor.
 	 *
 	 * @param RegistryInterface   $registry
 	 * @param EventStoreInterface $eventStore
+	 * @param ProjectionInterface $projection
 	 */
 	public function __construct(
 		RegistryInterface $registry,
-		EventStoreInterface $eventStore
+		EventStoreInterface $eventStore,
+		ProjectionInterface $projection
 	) {
 		parent::__construct($registry, User::class);
 		$this->eventStore = $eventStore;
+		$this->projection = $projection;
 	}
 
 	/**
@@ -68,6 +77,7 @@ final class UserCommandRepository extends ServiceEntityRepository implements Use
 	{
 		$recordedEvents = $aggregate->getRecordedEvents();
 
+		$this->projection->project($recordedEvents);
 		$this->eventStore->appendEvents($recordedEvents);
 
 		$aggregate->clearRecordedEvents();

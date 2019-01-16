@@ -12,17 +12,17 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces;
+namespace App\DDD\Application\UseCase\Command\User\Handler\Interfaces;
 
 use App\DDD\Security\User\Encoder\Interfaces\EncoderInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\RegistrationCommandInterface;
+use App\DDD\Application\UseCase\Command\User\Interfaces\RegistrationCommandInterface;
 
 /**
  * Interface RegistrationCommandHandlerInterface
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces
+ * @package App\DDD\Application\UseCase\Command\User\Handler\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

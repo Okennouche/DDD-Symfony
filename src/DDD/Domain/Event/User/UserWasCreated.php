@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace App\DDD\Domain\Event\User;
 
 use App\DDD\Shared\Uuid\Uuid;
+use App\DDD\Domain\Entity\User\User;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Domain\Event\User\Interfaces\UserWasCreatedInterface;
 
@@ -53,20 +54,32 @@ final class UserWasCreated implements UserWasCreatedInterface
 	protected $token;
 
 	/**
+	 * @var array $roles
+	 */
+	protected $roles;
+
+	/***
+	 * @var bool $isActive
+	 */
+	protected $isActive;
+
+	/**
+	 * @var string $createdAt
+	 */
+	protected $createdAt;
+
+	/**
 	 * @inheritdoc
 	 */
-	public function __construct(
-		Uuid $uuid,
-		string $username,
-		string $email,
-		string $password,
-		string $token
-	) {
-		$this->uuid = $uuid;
-		$this->username = $username;
-		$this->email = $email;
-		$this->password = $password;
-		$this->token = $token;
+	public function __construct(User $user) {
+		$this->uuid = $user->getUuid();
+		$this->username = $user->getUsername();
+		$this->email = $user->getEmail();
+		$this->password = $user->getPassword();
+		$this->token = $user->getConfirmationToken();
+		$this->roles = $user->getRoles();
+		$this->isActive = $user->isActive();
+		$this->createdAt = $user->getCreatedAt();
 	}
 
 	/**
@@ -107,5 +120,45 @@ final class UserWasCreated implements UserWasCreatedInterface
 	public function getToken(): string
 	{
 		return $this->token;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getRoles(): array
+	{
+		return $this->roles;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function isActive(): bool
+	{
+		return $this->isActive;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getCreatedAt(): \DateTimeImmutable
+	{
+		return $this->createdAt;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function arrayFromDataStore(): array
+	{
+		return [
+			':uuid' => (string) $this->getAggregateId(),
+			':username' => $this->username,
+			':email' => $this->email,
+			':password_encoded' => $this->password,
+			':roles' => json_encode($this->roles),
+			':is_active' => intval($this->isActive),
+			':created_at' => $this->createdAt->format('Y-m-d H:i:s'),
+		];
 	}
 }

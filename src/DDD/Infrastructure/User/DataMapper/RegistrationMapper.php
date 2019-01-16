@@ -24,7 +24,7 @@ use App\DDD\Domain\ValueObject\User\Username;
 use App\DDD\Domain\ValueObject\User\Password;
 use App\DDD\Domain\Service\Token\GeneratorToken;
 use App\DDD\Domain\ValueObject\User\PasswordConfirm;
-use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
+use App\DDD\Application\UseCase\Command\User\RegistrationCommand;
 use App\DDD\Infrastructure\User\DataMapper\Interfaces\RegistrationMapperInterface;
 
 /**

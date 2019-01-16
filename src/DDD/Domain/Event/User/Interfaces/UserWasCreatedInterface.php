@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Event\User\Interfaces;
 
+use App\DDD\Domain\Entity\User\User;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
-use App\DDD\Shared\Uuid\Uuid;
 use App\DDD\Shared\DomainEvent\Interfaces\DomainEventInterface;
 
 /**
@@ -30,13 +30,9 @@ interface UserWasCreatedInterface extends DomainEventInterface
 	/**
 	 * UserWasCreatedInterface constructor.
 	 *
-	 * @param Uuid $uuid
-	 * @param string $username
-	 * @param string $email
-	 * @param string $password
-	 * @param string $token
+	 * @param User $user
 	 */
-	public function __construct(Uuid $uuid, string $username, string $email, string $password, string $token);
+	public function __construct(User $user);
 
 	/**
 	 * @return AggregateIdInterface
@@ -62,4 +58,19 @@ interface UserWasCreatedInterface extends DomainEventInterface
 	 * @return string
 	 */
 	public function getToken():string;
+
+	/**
+	 * @return array
+	 */
+	public function getRoles(): array;
+
+	/**
+	 * @return bool
+	 */
+	public function isActive(): bool;
+
+	/**
+	 * @return \DateTimeImmutable
+	 */
+	public function getCreatedAt(): \DateTimeImmutable;
 }

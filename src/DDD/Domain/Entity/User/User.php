@@ -190,7 +190,7 @@ final class User extends AggregateRoot implements UserInterface, \Serializable
 	): self	{
 		$user = new self($uuid, $username, $email, $password, $token);
 
-		$user->recordThat(new UserWasCreated($uuid, $username, $email, $password, $token));
+		$user->recordThat(new UserWasCreated($user));
 
 		return $user;
 	}

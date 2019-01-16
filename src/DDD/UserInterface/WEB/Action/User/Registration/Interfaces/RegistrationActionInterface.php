@@ -16,11 +16,12 @@ namespace App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces;
 
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * Interface RegistrationActionInterface
  *
- * @author Omar Kennouche <o.kennouche@gmail.com>
+ * @package App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces
+ *
+ * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
 interface RegistrationActionInterface
 {

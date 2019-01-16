@@ -12,17 +12,16 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration\Handler;
-
+namespace App\DDD\Application\UseCase\Command\User\Handler;
 
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\AddTokenForAccountValidationCommandInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\Handler\Interfaces\AddTokenForAccountValidationCommandHandlerInterface;
+use App\DDD\Application\UseCase\Command\User\Interfaces\AddTokenForAccountValidationCommandInterface;
+use App\DDD\Application\UseCase\Command\User\Handler\Interfaces\AddTokenForAccountValidationCommandHandlerInterface;
 
 /**
  * Class AddTokenForAccountValidationCommandHandler
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration\Handler
+ * @package App\DDD\Application\UseCase\Command\User\Handler
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

@@ -12,14 +12,14 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration\Interfaces;
+namespace App\DDD\Application\UseCase\Command\User\Interfaces;
 
 use App\DDD\Shared\Uuid\Uuid;
 
 /**
  * Interface RegistrationCommandInterface
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration\Interfaces
+ * @package App\DDD\Application\UseCase\Command\User\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

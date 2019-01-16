@@ -28,7 +28,7 @@ use App\DDD\Domain\Exception\User\EmailAlreadyExistException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use App\DDD\Security\User\ValueObject\Interfaces\EmailAlreadyExistInterface;
-use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
+use App\DDD\Application\UseCase\Command\User\RegistrationCommand;
 use App\DDD\UserInterface\WEB\Action\User\Registration\Interfaces\RegistrationActionInterface;
 
 /**

@@ -16,6 +16,7 @@ namespace App\DDD\Shared\Serializer;
 
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use App\DDD\Shared\Serializer\Interfaces\PayloadSerializerInterface;
 
@@ -39,7 +40,14 @@ final class PayloadSerializer implements PayloadSerializerInterface
 	 */
 	public function __construct()
 	{
-		$this->serializer = new Serializer([new PropertyNormalizer()],[new JsonEncoder()]);
+		$this->serializer = new Serializer(
+			[
+				new PropertyNormalizer(), new DateTimeNormalizer()
+			],
+			[
+				new JsonEncoder()
+			]
+		);
 	}
 
 	/**

@@ -21,7 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\DDD\Infrastructure\User\DataMapper\RegistrationMapper;
-use App\DDD\Application\UseCase\Command\User\Registration\RegistrationCommand;
+use App\DDD\Application\UseCase\Command\User\RegistrationCommand;
 
 /**
  * Class RegistrationType

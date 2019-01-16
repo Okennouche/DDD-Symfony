@@ -12,17 +12,17 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Application\UseCase\Command\User\Registration;
+namespace App\DDD\Application\UseCase\Command\User;
 
 use App\DDD\Shared\Uuid\Uuid;
 use App\DDD\Shared\Token\Token;
-use App\DDD\Application\UseCase\Command\User\Registration\Interfaces\AddTokenForAccountValidationCommandInterface;
+use App\DDD\Application\UseCase\Command\User\Interfaces\AddTokenForAccountValidationCommandInterface;
 
 
 /**
  * Class AddTokenForAccountValidationCommand
  *
- * @package App\DDD\Application\UseCase\Command\User\Registration
+ * @package App\DDD\Application\UseCase\Command\User
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

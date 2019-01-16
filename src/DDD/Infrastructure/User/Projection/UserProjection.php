@@ -28,12 +28,15 @@ use App\DDD\Domain\Projection\Interfaces\UserProjectionInterface;
 final class UserProjection extends AbstractProjection implements UserProjectionInterface
 {
 	/**
-	 * @param UserWasCreated $event
-	 *
-	 * @return mixed
+	 * @inheritdoc
 	 */
 	public function projectWhenUserWasCreated(UserWasCreated $event)
 	{
-		return [];
+		$request = $this->connection->prepare(
+			'INSERT INTO `ddd_users` (`uuid`, `username`, `email`, `password`, `roles`, `is_active`, `created_at`) 
+             VALUES (:uuid, :username, :email, :password_encoded, :roles, :is_active, :created_at)'
+		);
+
+		$request->execute($event->arrayFromDataStore());
 	}
 }
