@@ -26,5 +26,4 @@ use App\DDD\Infrastructure\Service\Notifier\Interfaces\NotifierInterface;
  */
 final class Notifier implements NotifierInterface
 {
-
 }

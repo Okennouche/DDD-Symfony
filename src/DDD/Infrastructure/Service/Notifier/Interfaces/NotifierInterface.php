@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\Infrastructure\Service\Notifier\Interfaces;
 
-
 /**
  * Interface NotifierInterface
  *

@@ -16,12 +16,13 @@ namespace App\DDD\Infrastructure\Service\MessageBag;
 
 use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnSuccessRegistrationInterface;
 
-
 /**
  * Class OnSuccessRegistration
  *
+ * @package App\DDD\Infrastructure\Service\MessageBag
+ *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class OnSuccessRegistration implements OnSuccessRegistrationInterface
+final class OnSuccessRegistration implements OnSuccessRegistrationInterface
 {
 }

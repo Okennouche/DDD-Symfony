@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\Infrastructure\Service\MessageBag\Handler;
 
-use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\DDD\Infrastructure\Service\MessageBag\OnSuccessRegistration;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use App\DDD\Infrastructure\Service\MessageBag\Handler\Interfaces\OnSuccessRegistrationHandlerInterface;
 

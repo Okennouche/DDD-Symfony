@@ -20,9 +20,11 @@ use App\DDD\Infrastructure\Service\MessageBag\Interfaces\OnSuccessAuthentication
 /**
  * Class OnSuccessAuthentication
  *
+ * @package App\DDD\Infrastructure\Service\MessageBag
+ *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-class OnSuccessAuthentication implements OnSuccessAuthenticationInterface
+final class OnSuccessAuthentication implements OnSuccessAuthenticationInterface
 {
 	/**
 	 * @var string $username
