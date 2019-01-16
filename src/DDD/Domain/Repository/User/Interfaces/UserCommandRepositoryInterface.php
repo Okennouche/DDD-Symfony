@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace App\DDD\Domain\Repository\User\Interfaces;
 
-use App\DDD\Domain\Entity\User\User;
 use App\DDD\Shared\Repository\Interfaces\AggregateRepositoryInterface;
 
 /**
@@ -26,8 +25,4 @@ use App\DDD\Shared\Repository\Interfaces\AggregateRepositoryInterface;
  */
 interface UserCommandRepositoryInterface extends AggregateRepositoryInterface
 {
-	/**
-	 * @param User $user
-	 */
-	public function dataStore(User $user): void;
 }

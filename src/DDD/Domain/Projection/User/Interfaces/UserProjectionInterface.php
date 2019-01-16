@@ -12,7 +12,7 @@ declare(strict_types=1);
  *
  */
 
-namespace App\DDD\Domain\Projection\Interfaces;
+namespace App\DDD\Domain\Projection\User\Interfaces;
 
 use App\DDD\Domain\Event\User\UserWasCreated;
 use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
@@ -21,7 +21,7 @@ use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
 /**
  * Interface UserProjectionInterface
  *
- * @package App\DDD\Domain\Projection\Interfaces
+ * @package App\DDD\Domain\Projection\User\Interfaces
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */

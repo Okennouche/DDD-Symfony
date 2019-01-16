@@ -16,7 +16,7 @@ namespace App\DDD\Infrastructure\User\Projection;
 
 use App\DDD\Domain\Event\User\UserWasCreated;
 use App\DDD\Shared\Projection\AbstractProjection;
-use App\DDD\Domain\Projection\Interfaces\UserProjectionInterface;
+use App\DDD\Domain\Projection\User\Interfaces\UserProjectionInterface;
 
 /**
  * Class UserProjection

@@ -15,12 +15,10 @@ declare(strict_types=1);
 namespace App\DDD\Infrastructure\User\Repository;
 
 use App\DDD\Domain\Entity\User\User;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use App\DDD\Shared\Projection\Interfaces\ProjectionInterface;
 use App\DDD\Shared\Aggregate\Interfaces\AggregateIdInterface;
 use App\DDD\Shared\EventStore\Interfaces\EventStoreInterface;
 use App\DDD\Shared\RecordsEvents\Interfaces\RecordsEventsInterface;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
 
 /**
@@ -30,7 +28,7 @@ use App\DDD\Domain\Repository\User\Interfaces\UserCommandRepositoryInterface;
  *
  * @author Omar Kennouche <dev.kennouche@gmail.com>
  */
-final class UserCommandRepository extends ServiceEntityRepository implements UserCommandRepositoryInterface
+final class UserCommandRepository implements UserCommandRepositoryInterface
 {
 	/**
 	 * @var EventStoreInterface
@@ -45,31 +43,16 @@ final class UserCommandRepository extends ServiceEntityRepository implements Use
 	/**
 	 * UserCommandRepository constructor.
 	 *
-	 * @param RegistryInterface   $registry
 	 * @param EventStoreInterface $eventStore
 	 * @param ProjectionInterface $projection
 	 */
 	public function __construct(
-		RegistryInterface $registry,
 		EventStoreInterface $eventStore,
 		ProjectionInterface $projection
 	) {
-		parent::__construct($registry, User::class);
 		$this->eventStore = $eventStore;
 		$this->projection = $projection;
 	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function dataStore(User $user): void
-	{
-		$this->_em->persist($user);
-		$this->_em->flush();
-
-		$this->addEvents($user);
-	}
-
 	/**
 	 * @inheritdoc
 	 */
