@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace App\DDD\UserInterface\WEB\Action\User\Registration;
 
+use App\DDD\Application\UseCase\Query\User\FindUserByUuidQuery;
+use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Twig\Environment;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Security\Core\Security;
@@ -115,7 +117,7 @@ final class RegistrationAction implements RegistrationActionInterface
 			);
 		}
 
-		$registrationForm = $this->formFactory->create(RegistrationType::class, null);
+		$registrationForm = $this->formFactory->create(RegistrationType::class);
 
 		$registrationForm->handleRequest($request);
 
@@ -126,7 +128,9 @@ final class RegistrationAction implements RegistrationActionInterface
 			try {
 				$this->emailAlreadyExist->__invoke($registrationCommand->getEmail());
 				$this->bus->dispatch($registrationCommand);
+				$this->bus->dispatch(new FindUserByUuidQuery($registrationCommand->getUuid()));
 				$this->bus->dispatch(new OnSuccessRegistration());
+
 				return new RedirectResponse(
 					$this->urlGenerator->generate(
 						'security_login',
